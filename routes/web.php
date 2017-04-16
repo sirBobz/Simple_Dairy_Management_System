@@ -26,14 +26,14 @@ Route::get('/userAuth', 'Auth\AuthLogController@userAuth');
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify'); 
 
 //Admin Routes
-Route::get('/organization/return-view/admin-dashboard', 'admin\AdminController@dashboard');
-Route::get('/organization/return-view/farmers-details', 'admin\AdminController@farmersDetails');
-Route::get('/organization/return-view/farmers-produce', 'admin\AdminController@farmersProduce');
-Route::get('/organization/return-view/reports/select-by-date', 'admin\AdminController@selectReportsByDate');
-Route::get('/organization/return-view/admin-users', 'admin\AdminController@adminUsers');
+Route::get('/organization/return-view/admin-dashboard', 'Admin\AdminController@dashboard');
+Route::get('/organization/return-view/farmers-details', 'Admin\AdminController@farmersDetails');
+Route::get('/organization/return-view/farmers-produce', 'Admin\AdminController@farmersProduce');
+Route::get('/organization/return-view/reports/select-by-date', 'Admin\AdminController@selectReportsByDate');
+Route::get('/organization/return-view/admin-users', 'Admin\AdminController@adminUsers');
 
 //Admin form processing Routes
-Route::post('/organization/updateFarmersProduce', 'admin\AdminProcessingController@updateProduce');
+Route::post('/organization/updateFarmersProduce', 'Admin\AdminProcessingController@updateProduce');
 
 
 

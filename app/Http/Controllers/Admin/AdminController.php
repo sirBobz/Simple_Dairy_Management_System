@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\MilkDetail;
+use Datatables;
 
 class AdminController extends Controller
 {
@@ -36,10 +37,15 @@ class AdminController extends Controller
      */
     public function farmersDetails()
     {
-        $farmersDetails = User::where('user_type', '=', 'userMilkFarmer')->orderBy('created_at', 'desc')->get();
-        return view('admin.farmersDetails', compact($farmersDetails));
+        $usersDetails = User::where('user_type', '=', 'userMilkFarmer')->orderBy('created_at', 'desc')->paginate(10);
+        return view('admin.farmersDetails', 
+            [
+             'usersDetails'=>$usersDetails,
+            ]);
     }
 
+
+     
     /**
      * Show the farmers Produce.
      *
