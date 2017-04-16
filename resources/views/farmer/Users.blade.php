@@ -1,10 +1,10 @@
-@extends('layouts.admin')
+@extends('layouts.farmer')
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>Dashboard</h1>
         <ol class="breadcrumb">
-            <li class="active">Farmers Details</li>
+            <li class="active">My Details</li>
         </ol>
     </section>
 
@@ -16,7 +16,7 @@
          <?php $id = 1; ?>
             <!-- /.box-header -->
             <div class="box-body">
-            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#addUser">Add Farmer</button>
+            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#addUser">Add Admin</button>
                 <div class="table-responsive">
                     <table id="" class="table table-striped table no-margin" cellspacing="0" width="100%">
                        <thead>
@@ -63,7 +63,7 @@
             </div>
       </div>
     </section>
-       <!-- Add Organization  -->
+       <!-- Admin User  -->
     <div class="container">
 
         <!-- Modal -->
@@ -122,7 +122,7 @@
                             </div>
                         </div>
 
-                        <input type="hidden" name="user_type" value="userMilkFarmer">  
+                        <input type="hidden" name="user_type" value="userAdmin">
 
                         <div class="form-group{{ $errors->has('id_number') ? ' has-error' : '' }}">
                             <label for="id_number" class="col-md-4 control-label">ID Number</label>

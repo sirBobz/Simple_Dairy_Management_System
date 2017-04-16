@@ -37,12 +37,12 @@ Route::post('/organization/updateFarmersProduce', 'Admin\AdminProcessingControll
 
 
 
-// //Farmer Routes
-// Route::get('/organization/return-view/user-dashboard', 'HomeController@');
-// Route::get('/organization/return-view/user-details', 'HomeController@');
-// Route::get('/organization/return-view/produce-records', 'HomeController@');
-// Route::get('/organization/return-view/user-reports/select-by-date', 'HomeController@');
-// Route::get('/organization/return-view/users', 'HomeController@');
+//Farmer Routes
+Route::get('/organization/return-view/user-dashboard', 'farmers\FarmerController@dashboard');
+Route::get('/organization/return-view/user-details', 'farmers\FarmerController@farmersDetails');
+Route::get('/organization/return-view/produce-records', 'farmers\FarmerController@farmersProduce');
+Route::get('/organization/return-view/farmer-reports/select-by-date', 'farmers\FarmerController@selectReportsByDate');
+Route::get('/organization/return-view/farmer-users', 'farmers\FarmerController@farmusers');
 
 // //Farmer form processing routes
 // Route::get('/organization/return-view/admin-dashboard', 'HomeController@');

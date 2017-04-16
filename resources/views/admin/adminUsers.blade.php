@@ -122,7 +122,7 @@
                             </div>
                         </div>
 
-                        <input type="hidden" name="user_type" value="userMilkFarmer">
+                        <input type="hidden" name="user_type" value="userAdmin">
 
                         <div class="form-group{{ $errors->has('id_number') ? ' has-error' : '' }}">
                             <label for="id_number" class="col-md-4 control-label">ID Number</label>

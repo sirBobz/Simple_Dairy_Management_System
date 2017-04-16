@@ -143,7 +143,7 @@
                 </li>
                 <li class="treeview">
                     <a href="{{ url('/organization/return-view/user-details') }}">
-                        <i class="fa fa-university"></i> <span>Farmers Details</span></a>
+                        <i class="fa fa-university"></i> <span>My Details</span></a>
                 </li>
                 <li class="treeview">
                     <a href="{{ url('/organization/return-view/produce-records') }}">

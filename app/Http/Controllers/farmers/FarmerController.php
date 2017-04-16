@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\farmers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\MilkDetail;
+use Auth;
 
 class FarmerController extends Controller
 {
@@ -38,9 +39,9 @@ class FarmerController extends Controller
     {
         $userEmail = Auth::user()->email;
 
-        $farmersDetails = User::where('email', '=', $userEmail)->orderBy('created_at', 'desc')->get();
+        $usersDetails = User::where('email', '=', $userEmail)->orderBy('created_at', 'desc')->paginate(10);
         
-        return view('farmer.farmersDetails', compact($farmersDetails));
+        return view('farmer.farmersDetails', ['usersDetails'=>$usersDetails]);
     }
 
     /**
@@ -52,9 +53,9 @@ class FarmerController extends Controller
     {
        $userId = Auth::user()->id;
        
-       $farmersProduce = MilkDetail::where('user_id', '=', $userId)->orderBy('created_at', 'desc')->get();
+       $farmersProduce = MilkDetail::where('user_id', '=', $userId)->orderBy('created_at', 'desc')->paginate(10);
        
-       return view('farmer.farmersProduce', compact($farmersProduce));
+       return view('farmer.farmersProduce', ['farmersProduce'=>$farmersProduce]);
     }
     
     /**
@@ -73,7 +74,7 @@ class FarmerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function adminUsers()
+    public function farmusers()
     {
         
         return view('farmer.Users');

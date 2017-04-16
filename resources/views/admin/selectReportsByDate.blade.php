@@ -5,125 +5,68 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
 
-        <h1>Dashboard</h1>
+        <h1>Reports</h1>
         <ol class="breadcrumb">
-            <li class="active">Dashboard</li>
+            <li><a href="{{ url('') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li class="active">Reports</li>
         </ol>
 
     </section>
 
     <!-- Main content -->
     <section class="content">
-        <!-- Info boxes -->
-        <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-2x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"> </div>
-                                    <div>Number of Farmers</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="{{ url('/organization/return-view/farmers-details') }}">
-                            <div class="panel-footer">
-                                <span style="color:purple" class="pull-left">View Details</span>
-                                <span style="color:purple" class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-user fa-2x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"> </div>
-                                    <div>Total Number of Milk</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="{{url('dibon-organization/return-view/users')}}">
-                            <div class="panel-footer">
-                                <span style="color:purple" class="pull-left">View Details</span>
-                                <span style="color:purple" class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
 
-            <!-- fix for small devices only -->
-            <div class="clearfix visible-sm-block"></div>
+        <div class="box box-purple">
+            <div class="box-header with-border">
+                <h3 class="box-title">Reports</h3>
 
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                 <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-support fa-2x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"> </div>
-                                    <div></div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="{{url('dibon-organization/return-view/settings')}}">
-                            <div class="panel-footer">
-                                <span style="color:purple" class="pull-left">View Details</span>
-                                <span style="color:purple" class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-user fa-2x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"></div>
-                                    <div>Last Login</div>
+                <div class='picker col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-offset-2'>
+
+                    <h4>Select Date Period To Download Reports</h4>
+                    <br><br>
+
+                    <form method="get" action="{{url('/organization/updateFarmersProduce')}}">
+                        {{ csrf_field() }}
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-3 col-xs-6">
+                                <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
+                                    <label for="startdate">Start Date</label>
+                                    <input name="from" type="text" class="form-control" id='fromperiod'  placeholder="Start Date" required
+                                    @if ($errors->has('date'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('date') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                        <a href="{{ url('/dibon-organization/return-view/users') }}">
-                            <div class="panel-footer">
-                                <span style="color:purple" class="pull-left">View Details</span>
-                                <span style="color:purple" class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
+
+                        <div class="col-lg-3 col-sm-3 col-xs-6">
+                            <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
+                                <label for="enddate">End Date</label>
+                                <input name="to" type="text" class="form-control" id='toperiod'  placeholder="End Date" required
+                                @if ($errors->has('date'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('date') }}</strong>
+                                        </span>
+                                    @endif
                             </div>
-                        </a>
-                    </div>
-                <!-- /.info-box -->
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12 col-xs-12">
+                                <input type="submit" class="btn btn-facebook btn-flat pull-right" value="Select Date Period">
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <br>
+                    <br>
+                    <br>
+                </div>
             </div>
-            <!-- /.col -->
         </div>
-        <!-- /.row -->
-
-        <!-- TABLE: PAYMENTS -->
-        
-        
-        <!-- /.box -->
-
     </section>
 
 @endsection

@@ -26,7 +26,7 @@ class AuthLogController extends Controller
 
           case "userMilkFarmer":
                Log::Info("User $userEmail logged in to the Farmer Account from $ip");
-              return redirect('/organization/return-view/farmer-dashboard');
+              return redirect('/organization/return-view/user-dashboard');
               break;
    
           default:
