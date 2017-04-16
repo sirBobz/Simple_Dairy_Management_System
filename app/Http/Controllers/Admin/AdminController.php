@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\MilkDetail;
 use Datatables;
+use DB;
 
 class AdminController extends Controller
 {
@@ -19,6 +20,7 @@ class AdminController extends Controller
     {
     $this->middleware('userAdmin', ['except' => 'login']);
     }
+
 
     /**
      * Show the application dashboard.
@@ -38,14 +40,13 @@ class AdminController extends Controller
     public function farmersDetails()
     {
         $usersDetails = User::where('user_type', '=', 'userMilkFarmer')->orderBy('created_at', 'desc')->paginate(10);
+        
         return view('admin.farmersDetails', 
             [
              'usersDetails'=>$usersDetails,
             ]);
     }
 
-
-     
     /**
      * Show the farmers Produce.
      *
@@ -53,8 +54,10 @@ class AdminController extends Controller
      */
     public function farmersProduce()
     {
+       $farmersProduce = MilkDetail::orderBy('created_at', 'desc')->paginate(10);
        
-       return view('admin.farmersProduce');
+       return view('admin.farmersProduce',
+        ['farmersProduce'=>$farmersProduce]);
     }
     
     /**
@@ -75,7 +78,8 @@ class AdminController extends Controller
      */
     public function adminUsers()
     {
-
-        return view('admin.adminUsers');
+        $usersDetails = User::where('user_type', '=', 'userAdmin')->orderBy('created_at', 'desc')->paginate(10);
+        return view('admin.adminUsers',
+            ['usersDetails'=>$usersDetails]);
     }
 }

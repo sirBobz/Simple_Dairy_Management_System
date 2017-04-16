@@ -206,6 +206,10 @@
 
         <!-- Date time range picker js -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <!-- App scripts -->
+        @stack('scripts')
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
         <script type="text/javascript">
