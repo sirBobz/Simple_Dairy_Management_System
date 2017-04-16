@@ -22,13 +22,11 @@
                        <thead>
                          <tr>
                             <th> ID </th>
-                            <th> Name </th>
-                            <th> Gender</th>
-                            <th> Email</th>
-                            <th> ID Number</th>
-                            <th> Po Box</th>
-                            <th> Total Milk</th>
-                            <th> Status</th>
+                            <th> Farmer ID </th>
+                            <th> Milk Weight</th>
+                            <th> Milk Rate</th>
+                            <th> Total Amount</th>
+                            <th> Milk Condition</th>
                             <th> Created At</th>
                             <th> Updated At</th>
                          </tr>
@@ -36,19 +34,14 @@
 
                       <tbody>
                         <tr>
-                            @foreach($usersDetails as $user)
+                            @foreach($farmersProduce as $user)
                                 <tr>
                                     <td> {{$id ++}} </td>
-                                    <td> {{$user->first_name}} {{$user->second_name}} {{$user->third_name}}</td>
-                                    <td> {{$user->gender}}</td>
-                                     <td>{{$user->email}} </td>
-                                    <td> {{$user->id_number}}</td>
-                                    <td> {{$user->box_number}} {{$user->zip_code}} {{$user->postal_town}}</td>
-                                    <td> {{$user->total_milk}}</td>
-                                    <td> <?php if ($user->verified == 0)
-                                                   { echo "Inactive";}
-                                               else { echo "Active";} ?> 
-                                    </td>        
+                                    <td> {{$user->farmer_ID}}</td>
+                                    <td> {{$user->milk_weight}}</td>
+                                     <td>{{$user->milk_Rate}} </td>
+                                    <td> {{$user->total_Amount}}</td>
+                                    <td> {{$user->milk_condition}}</td>
                                     <td> {{$user->created_at}} </td>
                                     <td> {{$user->updated_at}}</td>
                                     
@@ -57,7 +50,7 @@
                         </tbody>
                     </table>
 
-                    <div class="pagination"> {{ $usersDetails->links() }} </div>
+                    <div class="pagination"> {{ $farmersProduce->links() }} </div>
                 </div>
                 <!-- /.table-responsive -->
             </div>
