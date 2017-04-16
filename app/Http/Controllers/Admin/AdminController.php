@@ -17,8 +17,11 @@ class AdminController extends Controller
      * @return void
      */
     public function __construct()
+    
     {
+    
     $this->middleware('userAdmin', ['except' => 'login']);
+    
     }
 
 
@@ -33,7 +36,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the farmers Details.
+     * Show the farmers Details and add farmers details as well.
      *
      * @return \Illuminate\Http\Response
      */
@@ -48,16 +51,18 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the farmers Produce.
+     * Show the farmers Produce and Add Milk Produce as well.
      *
      * @return \Illuminate\Http\Response
      */
     public function farmersProduce()
+    
     {
        $farmersProduce = MilkDetail::orderBy('created_at', 'desc')->paginate(10);
        
        return view('admin.farmersProduce',
-        ['farmersProduce'=>$farmersProduce]);
+        ['farmersProduce'=>$farmersProduce]
+        );
     }
     
     /**
@@ -72,7 +77,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the admin users on the platform.
+     * Show the admin users on the platform and add admin Interface.
      *
      * @return \Illuminate\Http\Response
      */

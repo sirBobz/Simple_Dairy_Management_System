@@ -18,6 +18,7 @@ class CreateMilkDetilsTable extends Migration
             $table->integer('user_id')->unsigned()->unique();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('milk_weight')->default(0);
+            $table->string('farmer_ID')->default(0);
             $table->string('milk_Rate')->default(0);
             $table->string('total_Amount')->default(0);
             $table->string('milk_condition')->nullable(); // no default value and will also BE NULLABLE

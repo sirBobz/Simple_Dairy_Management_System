@@ -1,129 +1,68 @@
 @extends('layouts.admin')
-
 @section('content')
-
     <!-- Content Header (Page header) -->
     <section class="content-header">
-
         <h1>Dashboard</h1>
         <ol class="breadcrumb">
-            <li class="active">Dashboard</li>
+            <li class="active">Farmers Produce</li>
         </ol>
-
     </section>
 
     <!-- Main content -->
     <section class="content">
-        <!-- Info boxes -->
-        <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-2x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"> </div>
-                                    <div>Number of Farmers</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="{{ url('/organization/return-view/farmers-details') }}">
-                            <div class="panel-footer">
-                                <span style="color:purple" class="pull-left">View Details</span>
-                                <span style="color:purple" class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-user fa-2x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"> </div>
-                                    <div>Total Number of Milk</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="{{url('dibon-organization/return-view/users')}}">
-                            <div class="panel-footer">
-                                <span style="color:purple" class="pull-left">View Details</span>
-                                <span style="color:purple" class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
+      <div class="container">
 
-            <!-- fix for small devices only -->
-            <div class="clearfix visible-sm-block"></div>
+         <!--  Initialize Table ID counter -->
+         <?php $id = 1; ?>
+            <!-- /.box-header -->
+            <div class="box-body">
+            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#addUser">Add Admin</button>
+                <div class="table-responsive">
+                    <table id="" class="table table-striped table no-margin" cellspacing="0" width="100%">
+                       <thead>
+                         <tr>
+                            <th> ID </th>
+                            <th> Name </th>
+                            <th> Gender</th>
+                            <th> Email</th>
+                            <th> ID Number</th>
+                            <th> Po Box</th>
+                            <th> Total Milk</th>
+                            <th> Status</th>
+                            <th> Created At</th>
+                            <th> Updated At</th>
+                         </tr>
+                       </thead>
 
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                 <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-support fa-2x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"> </div>
-                                    <div></div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="{{url('dibon-organization/return-view/settings')}}">
-                            <div class="panel-footer">
-                                <span style="color:purple" class="pull-left">View Details</span>
-                                <span style="color:purple" class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                <!-- /.info-box -->
+                      <tbody>
+                        <tr>
+                            @foreach($usersDetails as $user)
+                                <tr>
+                                    <td> {{$id ++}} </td>
+                                    <td> {{$user->first_name}} {{$user->second_name}} {{$user->third_name}}</td>
+                                    <td> {{$user->gender}}</td>
+                                     <td>{{$user->email}} </td>
+                                    <td> {{$user->id_number}}</td>
+                                    <td> {{$user->box_number}} {{$user->zip_code}} {{$user->postal_town}}</td>
+                                    <td> {{$user->total_milk}}</td>
+                                    <td> <?php if ($user->verified == 0)
+                                                   { echo "Inactive";}
+                                               else { echo "Active";} ?> 
+                                    </td>        
+                                    <td> {{$user->created_at}} </td>
+                                    <td> {{$user->updated_at}}</td>
+                                    
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                    <div class="pagination"> {{ $usersDetails->links() }} </div>
+                </div>
+                <!-- /.table-responsive -->
             </div>
-            <!-- /.col -->
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-user fa-2x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"></div>
-                                    <div>Last Login</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="{{ url('/dibon-organization/return-view/users') }}">
-                            <div class="panel-footer">
-                                <span style="color:purple" class="pull-left">View Details</span>
-                                <span style="color:purple" class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
-        </div>
-        <!-- /.row -->
-
-        <!-- TABLE: PAYMENTS -->
-        
-        
-        <!-- /.box -->
-
+      </div>
     </section>
+       
 
 @endsection

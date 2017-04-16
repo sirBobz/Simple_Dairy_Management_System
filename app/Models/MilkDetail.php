@@ -26,7 +26,10 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @package App\Models
  */
 class MilkDetail extends Eloquent
+
 {
+    protected $table = 'milkDetails';
+
 	protected $casts = [
 		'user_id' => 'int'
 	];
