@@ -1,18 +1,25 @@
 @extends('layouts.admin')
+
 @section('content')
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>Dashboard</h1>
+
+        <h1>Admin Users</h1>
         <ol class="breadcrumb">
-            <li class="active">Farmers Details</li>
+            <li><a href="{{ url('') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li class="active">Admin Users</li>
         </ol>
+
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <div class="container">
 
-         <!--  Initialize Table ID counter -->
+        <div class="box box-purple">
+            <div class="box-header with-border">
+                <h3 class="box-title">Reports</h3>
+                <!--  Initialize Table ID counter -->
          <?php $id = 1; ?>
             <!-- /.box-header -->
             <div class="box-body">
@@ -60,10 +67,12 @@
                     <div class="pagination"> {{ $usersDetails->links() }} </div>
                 </div>
                 <!-- /.table-responsive -->
+            </div>    
+                
             </div>
-      </div>
+        </div>
     </section>
-       <!-- Admin User  -->
+    <!-- Admin User  -->
     <div class="container">
 
         <!-- Modal -->
@@ -225,5 +234,6 @@
         </div>
 
     </div>
+    
 
 @endsection

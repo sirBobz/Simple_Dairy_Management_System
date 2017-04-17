@@ -33,7 +33,7 @@ Route::get('/organization/return-view/reports/select-by-date', 'Admin\AdminContr
 Route::get('/organization/return-view/admin-users', 'Admin\AdminController@adminUsers');
 
 //Admin form processing Routes
-Route::post('/organization/updateFarmersProduce', 'Admin\AdminProcessingController@updateProduce');
+Route::post('/search-farmer-details', 'Admin\AdminProcessingController@updateProduce');
 
 
 
