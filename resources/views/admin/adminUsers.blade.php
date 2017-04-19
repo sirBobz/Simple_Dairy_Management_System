@@ -7,7 +7,7 @@
 
         <h1>Admin Users</h1>
         <ol class="breadcrumb">
-            <li><a href="{{ url('') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="{{ url('organization/return-view/admin-dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li class="active">Admin Users</li>
         </ol>
 

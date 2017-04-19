@@ -7,9 +7,18 @@
 
         <h1>Farmers Details</h1>
         <ol class="breadcrumb">
-            <li><a href="{{ url('') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="{{ url('organization/return-view/admin-dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li class="active">Farmers Details</li>
         </ol>
+
+        <!-- Congrats message -->
+        <div class="container">
+            @if (session('message'))
+                <div class="alert alert-default">
+                    {{ session('message') }}
+                </div>
+            @endif
+        </div>
 
     </section>
 
@@ -42,16 +51,17 @@
                             <table id="" class="table table-striped table no-margin" cellspacing="0" width="100%">
                                <thead>
                                  <tr>
-                                    <th> ID </th>
+                                    <th> Id </th>
                                     <th> Name </th>
                                     <th> Gender</th>
                                     <th> Email</th>
-                                    <th> ID Number</th>
-                                    <th> Po Box</th>
+                                    <th> ID</th>
+                                    <th> Box</th>
+                                    <th> Dairy Number</th>
                                     <th> Total Milk</th>
                                     <th> Status</th>
                                     <th> Created At</th>
-                                    <th> Updated At</th>
+                                    <th> Update</th>
                                  </tr>
                                </thead>
 
@@ -59,19 +69,119 @@
                                 <tr>
                                     @foreach($usersDetails as $user)
                                         <tr>
-                                            <td> {{$id ++}} </td>
+                                            <td> {{$user->id}} </td>
                                             <td> {{$user->first_name}} {{$user->second_name}} {{$user->third_name}}</td>
                                             <td> {{$user->gender}}</td>
                                              <td>{{$user->email}} </td>
                                             <td> {{$user->id_number}}</td>
                                             <td> {{$user->box_number}} {{$user->zip_code}} {{$user->postal_town}}</td>
+                                            <td> {{$user->farmer_dairy_no}}</td>
                                             <td> {{$user->total_milk}}</td>
-                                            <td> <?php if ($user->verified == 0)
+                                            <td> 
+                                            <?php if ($user->verified == 0)
                                                            { echo "Inactive";}
-                                                       else { echo "Active";} ?> 
+                                                       else { echo "Active";} 
+                                            ?> 
                                             </td>        
                                             <td> {{$user->created_at}} </td>
-                                            <td> {{$user->updated_at}}</td>
+                                            <td> <button type="button" class="btn btn-facebook btn-flat btn-sm" data-toggle="modal"
+                                data-target="#setAccountModal{{$user->id}}">Milk Details
+                                    </button>
+                                    <!-- Account Set Up Modal -->
+                    <div class="modal fade" id="setAccountModal{{$user->id}}" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Milk for {{$user->first_name}} {{$user->second_name}} {{$user->third_name}}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form class="form-horizontal" role="form" method="POST"
+                                          action="{{ url('/organization/produce-details') }}">
+                                        {{ csrf_field() }}
+                                         
+                                        <div class="form-group{{ $errors->has('milk_weight') ? ' has-error' : '' }}">
+                                            <label for="milk_weight" class="col-md-4 control-label">Weight</label>
+
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <input id="milk_weight" type="number" placeholder="eg: 100" class="form-control"
+                                                       name="milk_weight" value="{{ old('milk_weight') }}"
+                                                       title="Please add milk weight" required autofocus>
+
+                                                @if ($errors->has('milk_weight'))
+                                                    <span class="help-block">
+                                                                    <strong>{{ $errors->first('milk_weight') }}</strong>
+                                                                </span>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group{{ $errors->has('milk_condition') ? ' has-error' : '' }}">
+                                            <label for="milk_condition" class="col-md-4 control-label">Condition</label>
+
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <input id="milk_condition" type="text" placeholder="eg: Okay" class="form-control"
+                                                       name="milk_condition" value="{{ old('milk_condition') }}"
+                                                       title="Please indicate milk Condition" required autofocus>
+
+                                                @if ($errors->has('milk_condition'))
+                                                    <span class="help-block">
+                                                                    <strong>{{ $errors->first('milk_condition') }}</strong>
+                                                                </span>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group{{ $errors->has('milk_Rate') ? ' has-error' : '' }}">
+                                            <label for="milk_Rate" class="col-md-4 control-label">Milk Rate</label>
+
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <input id="milk_Rate" type="number" placeholder="eg: 100" class="form-control"
+                                                       name="milk_Rate" value="{{ old('milk_Rate') }}"
+                                                       title="Please add milk rate" required autofocus>
+
+                                                @if ($errors->has('milk_Rate'))
+                                                    <span class="help-block">
+                                                                    <strong>{{ $errors->first('milk_Rate') }}</strong>
+                                                                </span>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }}">
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <input type="hidden" class="form-control" name="user_id" value="{{$user->id}}"
+                                                       required autofocus>
+
+                                                @if ($errors->has('user_id'))
+                                                    <span class="help-block">
+                                                                    <strong>{{ $errors->first('user_id') }}</strong>
+                                                                </span>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                        <br/>
+                                        <div class="form-group">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-md-offset-4">
+                                                <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <button type="submit" class="btn btn-facebook btn-flat pull-right">
+                                                    Save
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    </td>
                                             
                                         </tr>
                                     @endforeach
@@ -86,7 +196,7 @@
             </div>
         </div>
     </section>
-    <!-- Add Organization  -->
+    <!-- Add farmer  -->
     <div class="container">
 
         <!-- Modal -->
@@ -176,7 +286,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">E-Mail</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
@@ -188,9 +298,23 @@
                                 @endif
                             </div>
                         </div>
+
+                        <div class="form-group{{ $errors->has('farmer_dairy_no') ? ' has-error' : '' }}">
+                            <label for="farmer_dairy_no" class="col-md-4 control-label">Dairy Number</label>
+
+                            <div class="col-md-6">
+                                <input id="farmer_dairy_no" type="number" class="form-control" name="farmer_dairy_no" value="{{ old('farmer_dairy_no') }}" required autofocus>
+
+                                @if ($errors->has('farmer_dairy_no'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('farmer_dairy_no') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                     
                         <div class="form-group{{ $errors->has('box_number') ? ' has-error' : '' }}">
-                            <label for="box_number" class="col-md-4 control-label">PO BOX</label>
+                            <label for="box_number" class="col-md-4 control-label">Box Number</label>
 
                             <div class="col-md-6">
                                 <input id="box_number" type="number" class="form-control" name="box_number" value="{{ old('box_number') }}" required autofocus>
@@ -204,7 +328,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('zip_code') ? ' has-error' : '' }}">
-                            <label for="zip_code" class="col-md-4 control-label">ZIP CODE</label>
+                            <label for="zip_code" class="col-md-4 control-label">Zip Code</label>
 
                             <div class="col-md-6">
                                 <input id="zip_code" type="number" class="form-control" name="zip_code" value="{{ old('zip_code') }}" required autofocus>

@@ -25,6 +25,7 @@ class User extends Authenticatable
         'box_number',
         'zip_code',
         'postal_town',
+        'farmer_dairy_no',
         'total_milk',
         'password',
         'remember_token',

@@ -7,7 +7,7 @@
 
         <h1>Milk Records</h1>
         <ol class="breadcrumb">
-            <li><a href="{{ url('') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="{{ url('organization/return-view/admin-dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li class="active">Milk Records</li>
         </ol>
 
@@ -29,13 +29,14 @@
                        <thead>
                          <tr>
                             <th> ID </th>
-                            <th> Farmer ID </th>
+                            <th> Name </th>
+                            <th> ID No </th>
+                            <th> Dairy Number</th>
                             <th> Milk Weight</th>
                             <th> Milk Rate</th>
                             <th> Total Amount</th>
                             <th> Milk Condition</th>
                             <th> Created At</th>
-                            <th> Updated At</th>
                          </tr>
                        </thead>
 
@@ -44,13 +45,14 @@
                             @foreach($farmersProduce as $user)
                                 <tr>
                                     <td> {{$id ++}} </td>
+                                    <td> {{$user->farmerName}}</td>
                                     <td> {{$user->farmer_ID}}</td>
+                                    <td> {{$user->farmerDairyNum}}</td>
                                     <td> {{$user->milk_weight}}</td>
                                      <td>{{$user->milk_Rate}} </td>
                                     <td> {{$user->total_Amount}}</td>
                                     <td> {{$user->milk_condition}}</td>
                                     <td> {{$user->created_at}} </td>
-                                    <td> {{$user->updated_at}}</td>
                                     
                                 </tr>
                             @endforeach

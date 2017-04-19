@@ -21,10 +21,10 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-2x"></i>
+                                    <i class="fa fa-user fa-2x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"> </div>
+                                    <div class="huge">{{$number_farmers}} </div>
                                     <div>Number of Farmers</div>
                                 </div>
                             </div>
@@ -45,15 +45,15 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-user fa-2x"></i>
+                                    <i class="fa fa-tasks fa-2x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"> </div>
-                                    <div>Total Number of Milk</div>
+                                    <div class="huge"> {{$total_milk_per_month}}</div>
+                                    <div>Total Milk Per Month</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="{{url('dibon-organization/return-view/users')}}">
+                        <a href="{{url('/organization/return-view/farmers-produce')}}">
                             <div class="panel-footer">
                                 <span style="color:purple" class="pull-left">View Details</span>
                                 <span style="color:purple" class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -73,15 +73,15 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-support fa-2x"></i>
+                                    <i class="fa fa-money fa-2x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"> </div>
-                                    <div></div>
+                                    <div class="huge"> {{$total_amount_this_month}}</div>
+                                    <div>Total Money per Month</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="{{url('dibon-organization/return-view/settings')}}">
+                        <a href="{{url('/organization/return-view/farmers-produce')}}">
                             <div class="panel-footer">
                                 <span style="color:purple" class="pull-left">View Details</span>
                                 <span style="color:purple" class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -97,15 +97,15 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-user fa-2x"></i>
+                                    <i class="fa fa-tasks fa-2x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"></div>
-                                    <div>Last Login</div>
+                                    <div class="huge">{{$amount_collected_today}}</div>
+                                    <div>Amount Collected Today</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="{{ url('/dibon-organization/return-view/users') }}">
+                        <a href="{{ url('/organization/return-view/farmers-produce') }}">
                             <div class="panel-footer">
                                 <span style="color:purple" class="pull-left">View Details</span>
                                 <span style="color:purple" class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

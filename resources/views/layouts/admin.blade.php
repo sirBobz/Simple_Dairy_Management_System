@@ -94,7 +94,7 @@
                                     <img src="{{ asset('img/avatar.jpg') }}" class="img-circle" alt="User Image">
 
                                     <p>
-                                        {{ Auth::user()->name }} {{Auth::user()->second_name}}
+                                        {{ Auth::user()->first_name }} {{Auth::user()->second_name}}
                                         <small>Email: {{ Auth::user()->email }}</small>
                                     </p>
                                 </li>
@@ -154,6 +154,10 @@
                 <li class="treeview">
                     <a href="{{ url('/organization/return-view/reports/select-by-date') }}">
                         <i class="fa fa-bar-chart"></i> <span>Reports</span></a>
+                </li>
+                <li class="treeview">
+                    <a href="{{ url('/organization/return-view/admin-settings') }}">
+                        <i class="fa fa-cog"></i> <span>Settings</span></a>
                 </li>
                 <li class="treeview">
                     <a href="{{ url('/organization/return-view/admin-users') }}">

@@ -39,11 +39,14 @@ class MilkDetail extends Eloquent
 		'milk_weight',
 		'milk_Rate',
 		'total_Amount',
-		'milk_condition'
+		'milk_condition',
+		'farmer_ID',
+		'farmerName',
+		'farmerDairyNum',
 	];
 
-	public function user()
-	{
-		return $this->belongsTo(\App\Models\User::class);
-	}
+	// public function user()
+	// {
+	// 	return $this->belongsTo(\App\Models\User::class);
+	// }
 }

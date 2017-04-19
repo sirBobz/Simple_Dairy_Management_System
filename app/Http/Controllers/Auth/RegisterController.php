@@ -40,7 +40,7 @@ class RegisterController extends Controller
      */
      public function __construct()
       {
-        //$this->middleware('userAdmin', ['except' => 'login']);
+        $this->middleware('userAdmin', ['except' => 'login']);
       }
 
     /**
@@ -56,13 +56,13 @@ class RegisterController extends Controller
             'first_name' => 'required|string|max:55',
             'second_name' => 'required|string|max:55',
             'third_name' => 'required|string|max:55',
-            'gender' => 'required|string|max:25',
-            'id_number' => 'required|max:55',
-            'box_number' => 'required|max:55',
-            'zip_code' => 'required|max:55',
-            'postal_town' => 'required|string|max:55',
+            'gender' => 'required|string|max:6',
+            'id_number' => 'required|numeric',
+            'box_number' => 'required|numeric',
+            'zip_code' => 'required|numeric',
+            'postal_town' => 'required|string',
             'email' => 'required|email|max:55|unique:users',
-            //'password' => 'required|string|min:6|confirmed',
+            'farmer_dairy_no' => 'required|numeric|unique:users',
         ]);
     }
 
@@ -87,8 +87,9 @@ class RegisterController extends Controller
             'zip_code' => $data['zip_code'],
             'postal_town' => $data['postal_town'],
             'email' => $data['email'],
-            'password' => bcrypt('password'), //bcrypt($data['password']),
-            'email_token' => str_random(10),      
+            'password' => bcrypt('password'), //default password = password
+            'email_token' => str_random(10), 
+            'farmer_dairy_no'=> $data['farmer_dairy_no'],     
         ]);
 
          

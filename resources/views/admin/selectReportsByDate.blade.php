@@ -7,7 +7,7 @@
 
         <h1>Reports</h1>
         <ol class="breadcrumb">
-            <li><a href="{{ url('') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="{{ url('organization/return-view/admin-dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li class="active">Reports</li>
         </ol>
 
@@ -25,13 +25,13 @@
                     <h4>Select Date Period To Download Reports</h4>
                     <br><br>
 
-                    <form method="get" action="{{url('/organization/updateFarmersProduce')}}">
+                    <form method="get" action="{{url('pdfview')}}">
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="col-lg-3 col-sm-3 col-xs-6">
                                 <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
                                     <label for="startdate">Start Date</label>
-                                    <input name="from" type="text" class="form-control" id='fromperiod'  placeholder="Start Date" required
+                                    <input name="from_date" type="text" class="form-control" id='fromperiod'  placeholder="Start Date" required
                                     @if ($errors->has('date'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('date') }}</strong>
@@ -44,7 +44,7 @@
                         <div class="col-lg-3 col-sm-3 col-xs-6">
                             <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
                                 <label for="enddate">End Date</label>
-                                <input name="to" type="text" class="form-control" id='toperiod'  placeholder="End Date" required
+                                <input name="to_date" type="text" class="form-control" id='toperiod'  placeholder="End Date" required
                                 @if ($errors->has('date'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('date') }}</strong>

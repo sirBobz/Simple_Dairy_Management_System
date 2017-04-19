@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('box_number')->default('Not set');
             $table->string('zip_code')->default('Not set');
             $table->string('postal_town')->default('Not set');
+            $table->string('farmer_dairy_no')->nullable();
             $table->string('total_milk')->default(0);
             $table->string('password');
             $table->tinyInteger('verified')->default(0); // default value of 0 , [0 for false & 1 for true i.e. verified]

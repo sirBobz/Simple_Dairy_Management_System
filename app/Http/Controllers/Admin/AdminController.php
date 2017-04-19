@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\MilkDetail;
 use Datatables;
 use DB;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -32,7 +33,29 @@ class AdminController extends Controller
      */
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $number_farmers = User::where('user_type', '=', 'userMilkFarmer')->count();
+        
+        $total_milk_per_month = DB::table('milkDetails')
+              ->whereraw('MONTH(created_at) = ?', [date('n')])
+              ->sum('milk_weight');
+
+        $amount_collected_today = DB::table('milkDetails')
+            ->whereRaw('date(created_at) = ?', [Carbon::today()])
+            ->sum('milk_weight');
+
+        $total_amount_this_month = DB::table('milkDetails')
+              ->whereraw('MONTH(created_at) = ?', [date('n')])
+              ->sum('total_Amount');    
+
+
+
+        return view('admin.dashboard',
+            [
+             'number_farmers'=>$number_farmers,
+             'total_milk_per_month'=>$total_milk_per_month,
+             'amount_collected_today'=>$amount_collected_today,
+             'total_amount_this_month'=>$total_amount_this_month,
+            ]);
     }
 
     /**
@@ -61,8 +84,9 @@ class AdminController extends Controller
        $farmersProduce = MilkDetail::orderBy('created_at', 'desc')->paginate(10);
        
        return view('admin.farmersProduce',
-        ['farmersProduce'=>$farmersProduce]
-        );
+        [
+          'farmersProduce'=>$farmersProduce,
+        ]);
     }
     
     /**
@@ -85,6 +109,21 @@ class AdminController extends Controller
     {
         $usersDetails = User::where('user_type', '=', 'userAdmin')->orderBy('created_at', 'desc')->paginate(10);
         return view('admin.adminUsers',
-            ['usersDetails'=>$usersDetails]);
+            [
+               'usersDetails'=>$usersDetails,
+            ]);
     }
+
+    /**
+     * Show the admin users on the platform and add admin Interface.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    
+    public function setting()
+    {
+
+       return view('admin.setting'); 
+    }
+
 }

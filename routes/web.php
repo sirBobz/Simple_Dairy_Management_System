@@ -31,10 +31,13 @@ Route::get('/organization/return-view/farmers-details', 'Admin\AdminController@f
 Route::get('/organization/return-view/farmers-produce', 'Admin\AdminController@farmersProduce');
 Route::get('/organization/return-view/reports/select-by-date', 'Admin\AdminController@selectReportsByDate');
 Route::get('/organization/return-view/admin-users', 'Admin\AdminController@adminUsers');
+Route::get('/organization/return-view/admin-settings', 'Admin\AdminController@setting');
+
 
 //Admin form processing Routes
-Route::post('/search-farmer-details', 'Admin\AdminProcessingController@updateProduce');
-
+Route::post('/search-farmer-details', 'Admin\AdminProcessingController@searchFarmer');  
+Route::post('/organization/produce-details', 'Admin\AdminProcessingController@validateFormRequest');
+Route::get('pdfview', array('as'=>'pdfview','uses'=>'Admin\AdminProcessingController@pdfview'));
 
 
 //Farmer Routes
