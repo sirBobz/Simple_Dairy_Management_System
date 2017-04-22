@@ -230,9 +230,6 @@
           });
         });
         </script>
-
-    
-
         <!-- App scripts -->
         @stack('scripts')
 

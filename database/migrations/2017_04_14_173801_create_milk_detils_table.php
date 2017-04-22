@@ -25,6 +25,7 @@ class CreateMilkDetilsTable extends Migration
             $table->string('total_Amount')->default(0); 
             $table->string('milk_condition')->nullable(); // no default value and will also BE NULLABLE
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

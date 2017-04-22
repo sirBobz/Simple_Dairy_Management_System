@@ -8,7 +8,7 @@
 namespace App\Models;
 
 use Reliese\Database\Eloquent\Model as Eloquent;
-
+use SoftDeletes;
 /**
  * Class MilkDetail
  * 
@@ -28,7 +28,14 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 class MilkDetail extends Eloquent
 
 {
+	
+	
     protected $table = 'milkDetails';
+
+
+
+    protected $dates = ['deleted_at'];
+
 
 	protected $casts = [
 		'user_id' => 'int'

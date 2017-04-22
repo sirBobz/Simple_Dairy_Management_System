@@ -28,7 +28,7 @@
 
         <div class="box box-purple">
             <div class="box-header with-border">
-                <h3 class="box-title">Reports</h3>
+                <h3 class="box-title"></h3>
                     <!--  Initialize Table ID counter -->
          <?php $id = 1; ?>
             <!-- /.box-header -->
@@ -62,8 +62,9 @@
                             <td class="text-center">{{$item->created_at}}</td>
                             <td class="text-center"><form action="delete-farmer-produce/{{$item->id}}" method='post'>
                             {{csrf_field()}}
-                            <button type="submit" class="delete-modal btn btn-danger btn-sm">
-                               <span class="glyphicon glyphicon-trash"> Delete</span>
+                            <button type="submit" class="delete-modal btn btn-danger btn-sm"
+                            onclick="return confirm('Do You Want To Delete {{$item->farmerName}} Record?');"
+                            <span class="glyphicon glyphicon-trash"> Delete</span>    
                             </button></form>
                             </td>
                         </tr>

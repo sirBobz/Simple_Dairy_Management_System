@@ -14,7 +14,7 @@
         <!-- Congrats message -->
         <div class="container">
             @if (session('message'))
-                <div class="alert alert-default">
+                <div class="alert alert-success">
                     {{ session('message') }}
                 </div>
             @endif
@@ -263,7 +263,7 @@
 
                             <div class="col-md-6">
                                <select required="required" name="gender" id="gender" class="form-control" title="Please set the gender">
-                                  <option>Select the Gender</option>
+                                  <option value="">Select the Gender</option>
                                    <option value="Male">Male</option>
                                    <option value="Female">Female</option>
                                </select>
@@ -308,7 +308,7 @@
                             <label for="box_number" class="col-md-4 control-label">Box Number</label>
 
                             <div class="col-md-6">
-                                <input id="box_number" type="number" class="form-control" name="box_number" value="{{ old('box_number') }}" required autofocus>
+                                <input id="box_number" type="number" class="form-control" name="box_number" value="{{ old('box_number') }}"  autofocus>
 
                                 @if ($errors->has('box_number'))
                                     <span class="help-block">
@@ -322,7 +322,7 @@
                             <label for="zip_code" class="col-md-4 control-label">Zip Code</label>
 
                             <div class="col-md-6">
-                                <input id="zip_code" type="number" class="form-control" name="zip_code" value="{{ old('zip_code') }}" required autofocus>
+                                <input id="zip_code" type="number" class="form-control" name="zip_code" value="{{ old('zip_code') }}"  autofocus>
 
                                 @if ($errors->has('zip_code'))
                                     <span class="help-block">
@@ -336,7 +336,7 @@
                             <label for="postal_town" class="col-md-4 control-label">Location</label>
 
                             <div class="col-md-6">
-                                <input id="postal_town" type="text" class="form-control" name="postal_town" value="{{ old('postal_town') }}" required autofocus>
+                                <input id="postal_town" type="text" class="form-control" name="postal_town" value="{{ old('postal_town') }}"  autofocus>
 
                                 @if ($errors->has('postal_town'))
                                     <span class="help-block">

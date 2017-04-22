@@ -32,6 +32,8 @@ class CreateUsersTable extends Migration
             $table->string('email_token')->nullable(); // no default value and will also BE NULLABLE
             $table->rememberToken();
             $table->timestamps();
+            
+            
         });
     }
 

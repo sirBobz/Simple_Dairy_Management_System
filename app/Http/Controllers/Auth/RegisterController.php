@@ -52,16 +52,16 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'user_type'=>'required|string|max:40',
-            'first_name' => 'required|string|max:55',
-            'second_name' => 'required|string|max:55',
-            'third_name' => 'required|string|max:55',
-            'gender' => 'required|string|max:6',
-            'id_number' => 'required|numeric',
-            'box_number' => 'required|numeric',
-            'zip_code' => 'required|numeric',
-            'postal_town' => 'required|string',
-            'email' => 'required|email|max:55|unique:users',
+            'user_type'=>'required|string|max:25',
+            'first_name' => 'required|string|max:25',
+            'second_name' => 'required|string|max:25',
+            'third_name' => 'sometimes|max:25',
+            'gender' => 'required|max:6',
+            'id_number' => 'required|numeric|unique:users|max:9',
+            'box_number' => 'sometimes|max:25',
+            'zip_code' => 'sometimes|max:5',
+            'postal_town' => 'sometimes|max:25',
+            'email' => 'required|email|max:25|unique:users',
             'farmer_dairy_no' => 'required|numeric|unique:users',
         ]);
     }
@@ -102,8 +102,9 @@ class RegisterController extends Controller
         // Laravel validation
         $validator = $this->validator($request->all());
         if ($validator->fails()) 
-        {   \Log::Info('Validator Fails');
+        {   
             $this->throwValidationException($request, $validator);
+            \Log::Info('Validator Fails; ');
         }
         
         // Using database transactions is useful here because stuff happening is actually a transaction
@@ -111,14 +112,15 @@ class RegisterController extends Controller
         DB::beginTransaction();
         try
         {
-            \Log::Info('Reached Here!');
-            $user = $this->create($request->all());
             
+            $user = $this->create($request->all());
+            \Log::Info('A New User Has Been Created Successfully');
+
             // After creating the user send an email with the random token generated in the create method above
             $email = new EmailVerification(new User(['email_token' => $user->email_token, 'first_name' => $user->first_name, 'second_name' => $user->second_name]));
             
             Mail::to($user->email)->send($email);
-            \Log::Info('Email sent to Registered User $email');
+            \Log::Info('Email sent to Registered User; Email $email');
 
             DB::commit();
             return back();
@@ -127,7 +129,7 @@ class RegisterController extends Controller
         catch(Exception $e)
         {
 
-            \Log::Info('Exception while Registering:  $e');
+            \Log::Info('Exception Caught while Registering:  $e');
 
             DB::rollback(); 
             return back();

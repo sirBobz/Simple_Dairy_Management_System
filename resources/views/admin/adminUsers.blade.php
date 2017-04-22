@@ -153,7 +153,7 @@
 
                             <div class="col-md-6">
                                <select required="required" name="gender" id="gender" class="form-control" title="Please set the gender">
-                                  <option>Select the Gender</option>
+                                  <option value="">Select the Gender</option>
                                    <option value="Male">Male</option>
                                    <option value="Female">Female</option>
                                </select>

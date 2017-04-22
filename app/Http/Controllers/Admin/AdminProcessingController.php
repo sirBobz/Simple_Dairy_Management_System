@@ -11,6 +11,7 @@ use Datatables;
 use PDF;
 
 
+
 class AdminProcessingController extends Controller
 {
     /**
@@ -140,6 +141,8 @@ class AdminProcessingController extends Controller
 
      $user_milk_Details = MilkDetail::find($id);
      $user_milk_Details->delete();
+
+     \Log::Info("USER EMAIL $userEmail deleted the record ID $id from MilkDetail Model"); 
      
      return redirect('/organization/return-view/farmers-produce')->with('message', 'Details Deleted Successfully');
 
