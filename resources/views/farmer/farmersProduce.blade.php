@@ -25,9 +25,9 @@
             <div class="box-body">
             
                 <div class="table-responsive">
-                    <table id="" class="table table-striped table no-margin" cellspacing="0" width="100%">
+                    <table id="myProduce" class="table table-striped table no-margin" cellspacing="0" width="100%">
                        <thead>
-                         <tr>
+                         <tr class = "success">
                             <th> ID </th>
                             <th> Name </th>
                             <th> ID No </th>
@@ -44,7 +44,7 @@
                         <tr>
                             @foreach($farmersProduce as $user)
                                 <tr>
-                                    <td> {{$id ++}} </td>
+                                    <td> {{$user->id}} </td>
                                     <td> {{$user->farmerName}}</td>
                                     <td> {{$user->farmer_ID}}</td>
                                     <td> {{$user->farmerDairyNum}}</td>
@@ -59,7 +59,7 @@
                         </tbody>
                     </table>
 
-                    <div class="pagination"> {{ $farmersProduce->links() }} </div>
+                    
                 </div>
                 <!-- /.table-responsive -->
             </div>    

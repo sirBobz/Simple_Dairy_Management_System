@@ -82,7 +82,7 @@ class FarmerController extends Controller
     {
        $userId = Auth::user()->id;
        
-       $farmersProduce = MilkDetail::where('user_id', '=', $userId)->orderBy('created_at', 'desc')->paginate(10);
+       $farmersProduce = MilkDetail::where('user_id', '=', $userId)->get();
        
        return view('farmer.farmersProduce', ['farmersProduce'=>$farmersProduce]);
     }

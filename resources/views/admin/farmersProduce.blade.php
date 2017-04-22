@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+
+
 @section('content')
 
     <!-- Content Header (Page header) -->
@@ -23,44 +25,48 @@
          <?php $id = 1; ?>
             <!-- /.box-header -->
             <div class="box-body">
-            
-                <div class="table-responsive">
-                    <table id="" class="table table-striped table no-margin" cellspacing="0" width="100%">
-                       <thead>
-                         <tr>
-                            <th> ID </th>
-                            <th> Name </th>
-                            <th> ID No </th>
-                            <th> Dairy Number</th>
-                            <th> Milk Weight</th>
-                            <th> Milk Rate</th>
-                            <th> Total Amount</th>
-                            <th> Milk Condition</th>
-                            <th> Created At</th>
-                         </tr>
-                       </thead>
-
-                      <tbody>
-                        <tr>
-                            @foreach($farmersProduce as $user)
-                                <tr>
-                                    <td> {{$id ++}} </td>
-                                    <td> {{$user->farmerName}}</td>
-                                    <td> {{$user->farmer_ID}}</td>
-                                    <td> {{$user->farmerDairyNum}}</td>
-                                    <td> {{$user->milk_weight}}</td>
-                                     <td>{{$user->milk_Rate}} </td>
-                                    <td> {{$user->total_Amount}}</td>
-                                    <td> {{$user->milk_condition}}</td>
-                                    <td> {{$user->created_at}} </td>
-                                    
-                                </tr>
-                            @endforeach
+               <table class="table" id="farmersProduce">
+                    <thead>
+                        <tr class = "success">
+                            <th class="text-center">ID</th>
+                            <th class="text-center">Farmer Name</th>
+                            <th class="text-center">ID No</th>
+                            <th class="text-center">Dairy Number</th>
+                            <th class="text-center">Milk Weight</th>
+                            <th class="text-center">Milk Rate</th>
+                            <th class="text-center">Total Amount</th>
+                            <th class="text-center">Milk Condition</th>
+                            <th class="text-center">Created At</th>
+                            <!-- <th class="text-center">Action</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($data as $item)
+                        <tr class="item{{$item->id}}">
+                            <td class="text-center">{{$id ++}}</td>
+                            <td class="text-center">{{$item->farmerName}}</td>
+                            <td class="text-center">{{$item->farmer_ID}}</td>
+                            <td class="text-center">{{$item->farmerDairyNum}}</td>
+                            <td class="text-center">{{$item->milk_weight}}</td>
+                            <td class="text-center">{{$item->milk_Rate}}</td>
+                            <td class="text-center">{{$item->total_Amount}}</td>
+                            <td class="text-center">{{$item->milk_condition}}</td>
+                            <td class="text-center">{{$item->created_at}}</td>
+                            <!-- <td class="text-center"><button class="edit-modal btn btn-info"
+                                    data-info="{{$item->id}},{{$item->farmerName}},{{$item->farmer_ID}},{{$item->farmerDairyNum}},{{$item->milk_weight}},{{$item->milk_Rate}},{{$item->total_Amount}},{{$item->milk_condition}},{{$item->created_at}}">
+                                    <span class="glyphicon glyphicon-edit"></span> Edit
+                                </button>
+                                <button class="delete-modal btn btn-danger"
+                                    data-info="{{$item->id}},{{$item->farmerName}},{{$item->farmer_ID}},{{$item->farmerDairyNum}},{{$item->milk_weight}},{{$item->milk_Rate}},{{$item->total_Amount}},{{$item->milk_condition}},{{$item->created_at}}">
+                                    <span class="glyphicon glyphicon-trash"></span> Delete
+                                </button></td> -->
+                        </tr>
+                        @endforeach
                         </tbody>
-                    </table>
+                </table>
 
-                    <div class="pagination"> {{ $farmersProduce->links() }} </div>
-                </div>
+                 <tr>           
+                
                 <!-- /.table-responsive -->
             </div>
                 

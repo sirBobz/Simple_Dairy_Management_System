@@ -25,9 +25,9 @@
             <div class="box-body">
             
                 <div class="table-responsive">
-                    <table id="" class="table table-striped table no-margin" cellspacing="0" width="100%">
+                    <table id="userDetails" class="table table-striped table no-margin" cellspacing="0" width="100%">
                        <thead>
-                         <tr>
+                         <tr class = "success">
                             <th> ID </th>
                             <th> Name </th>
                             <th> Gender</th>

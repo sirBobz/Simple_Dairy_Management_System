@@ -20,17 +20,17 @@ class AuthLogController extends Controller
         switch($userLevel)
         {
           case "userAdmin":
-               Log::Info("User $userEmail logged in to the ADMIN Account from $ip");
+               Log::Info("User $userEmail logged in to the ADMIN Account from IP Address: $ip");
               return redirect('/organization/return-view/admin-dashboard');
               break;
 
           case "userMilkFarmer":
-               Log::Info("User $userEmail logged in to the Farmer Account from $ip");
+               Log::Info("User $userEmail logged in to the Farmer Account from IP Address: $ip");
               return redirect('/organization/return-view/user-dashboard');
               break;
    
           default:
-               Log::Info('ALERT! This case has been Logged: No User Type Found------> Attempt from $ip');
+               Log::Info('ALERT! UNKNOWN CASE: No User Type Found------> Attempt from IP Address: $ip');
               return redirect('login');
               break;
         }

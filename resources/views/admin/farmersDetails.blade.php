@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
 
-        <h1>Farmers Details</h1>
+        <h1>Details</h1>
         <ol class="breadcrumb">
             <li><a href="{{ url('organization/return-view/admin-dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li class="active">Farmers Details</li>
@@ -28,63 +28,50 @@
         <div class="box box-purple">
             <div class="box-header with-border">
                 <h3 class="box-title">Reports</h3>
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addUser">Add Farmer</button>
+
                     <!-- /.box-header -->
                     <?php $id = 1; ?>
                     <div class="box-body">
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addUser">Add Farmer</button>
                     
-                    <!-- Search Bar form  -->
-                    <br> <br>
-                    <form action="/search-farmer-details" method="POST" role="search" id="search">
-                        {{ csrf_field() }}
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="query"
-                                placeholder="Search farmer"> <span class="input-group-btn">
-                                <button type="submit" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
-                        </div>
-                   </form>
-
                         <div class="table-responsive">
-                            <table id="" class="table table-striped table no-margin" cellspacing="0" width="100%">
+                            <table id="farmersDetails" class="table table-striped table no-margin" cellspacing="0" width="100%">
                                <thead>
-                                 <tr>
-                                    <th> Id </th>
-                                    <th> Name </th>
-                                    <th> Gender</th>
-                                    <th> Email</th>
-                                    <th> ID</th>
-                                    <th> Box</th>
-                                    <th> Dairy Number</th>
-                                    <th> Total Milk</th>
-                                    <th> Status</th>
-                                    <th> Created At</th>
-                                    <th> Update</th>
-                                 </tr>
+                                 <tr class = "success">
+                                    <th class="text-center"> Id </th>
+                                    <th class="text-center"> Name </th>
+                                    <th class="text-center"> Gender</th>
+                                    <th class="text-center"> Email</th>
+                                    <th class="text-center"> ID</th>
+                                    <th class="text-center"> Address</th>
+                                    <th class="text-center"> Dairy Number</th>
+                                    <th class="text-center"> Total Milk</th>
+                                    <th class="text-center"> Status</th>
+                                    <th class="text-center"> Created At</th>
+                                    <th class="text-center"> Action</th>
+                                </tr>
                                </thead>
 
                               <tbody>
                                 <tr>
                                     @foreach($usersDetails as $user)
                                         <tr>
-                                            <td> {{$user->id}} </td>
-                                            <td> {{$user->first_name}} {{$user->second_name}} {{$user->third_name}}</td>
-                                            <td> {{$user->gender}}</td>
-                                             <td>{{$user->email}} </td>
-                                            <td> {{$user->id_number}}</td>
-                                            <td> {{$user->box_number}} {{$user->zip_code}} {{$user->postal_town}}</td>
-                                            <td> {{$user->farmer_dairy_no}}</td>
-                                            <td> {{$user->total_milk}}</td>
+                                            <td class="text-center"> {{$user->id}} </td>
+                                            <td class="text-center"> {{$user->first_name}} {{$user->second_name}}</td>
+                                            <td class="text-center"> {{$user->gender}}</td>
+                                            <td class="text-center">{{$user->email}} </td>
+                                            <td class="text-center"> {{$user->id_number}}</td>
+                                            <td class="text-center"> {{$user->box_number}} {{$user->zip_code}} {{$user->postal_town}}</td>
+                                            <td class="text-center"> {{$user->farmer_dairy_no}}</td>
+                                            <td class="text-center"> {{$user->total_milk}}</td>
                                             <td> 
                                             <?php if ($user->verified == 0)
                                                            { echo "Inactive";}
                                                        else { echo "Active";} 
                                             ?> 
                                             </td>        
-                                            <td> {{$user->created_at}} </td>
-                                            <td> <button type="button" class="btn btn-facebook btn-flat btn-sm" data-toggle="modal"
+                                            <td class="text-center"> {{$user->created_at}} </td>
+                                            <td class="text-center"> <button type="button" class="btn btn-facebook btn-flat btn-sm" data-toggle="modal"
                                 data-target="#setAccountModal{{$user->id}}">Milk Details
                                     </button>
                                     <!-- Account Set Up Modal -->
@@ -188,7 +175,7 @@
                                 </tbody>
                             </table>
 
-                            <div class="pagination"> {{ $usersDetails->links() }} </div>
+                            
                         </div>
                         <!-- /.table-responsive -->
                     </div>

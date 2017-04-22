@@ -19,11 +19,26 @@ Route::get('/', function () {
 //Aunthetication Routes
 Route::post('/register', 'Auth\RegisterController@register');
 Auth::routes();
-
-
-
 Route::get('/userAuth', 'Auth\AuthLogController@userAuth');
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify'); 
+
+
+
+//SuperAdmin Routes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Admin Routes
 Route::get('/organization/return-view/admin-dashboard', 'Admin\AdminController@dashboard');
@@ -32,6 +47,8 @@ Route::get('/organization/return-view/farmers-produce', 'Admin\AdminController@f
 Route::get('/organization/return-view/reports/select-by-date', 'Admin\AdminController@selectReportsByDate');
 Route::get('/organization/return-view/admin-users', 'Admin\AdminController@adminUsers');
 Route::get('/organization/return-view/admin-settings', 'Admin\AdminController@setting');
+
+
 
 
 //Admin form processing Routes
@@ -46,8 +63,3 @@ Route::get('/organization/return-view/user-details', 'farmers\FarmerController@f
 Route::get('/organization/return-view/produce-records', 'farmers\FarmerController@farmersProduce');
 Route::get('/organization/return-view/farmer-reports/select-by-date', 'farmers\FarmerController@selectReportsByDate');
 Route::get('/organization/return-view/farmer-users', 'farmers\FarmerController@farmusers');
-
-// //Farmer form processing routes
-// Route::get('/organization/return-view/admin-dashboard', 'HomeController@');
-// Route::get('/organization/return-view/admin-dashboard', 'HomeController@');
-// Route::get('/organization/return-view/admin-dashboard', 'HomeController@');

@@ -65,7 +65,7 @@ class AdminController extends Controller
      */
     public function farmersDetails()
     {
-        $usersDetails = User::where('user_type', '=', 'userMilkFarmer')->orderBy('created_at', 'desc')->paginate(10);
+        $usersDetails = User::where('user_type', '=', 'userMilkFarmer')->get();
         
         return view('admin.farmersDetails', 
             [
@@ -81,11 +81,11 @@ class AdminController extends Controller
     public function farmersProduce()
     
     {
-       $farmersProduce = MilkDetail::orderBy('created_at', 'desc')->paginate(10);
+      $data = MilkDetail::all ();
        
        return view('admin.farmersProduce',
         [
-          'farmersProduce'=>$farmersProduce,
+          'data'=>$data,
         ]);
     }
     
