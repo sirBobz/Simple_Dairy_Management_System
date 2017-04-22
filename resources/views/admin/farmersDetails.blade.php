@@ -35,6 +35,7 @@
                     <div class="box-body">
                     
                         <div class="table-responsive">
+                  
                             <table id="farmersDetails" class="table table-striped table no-margin" cellspacing="0" width="100%">
                                <thead>
                                  <tr class = "success">
@@ -56,7 +57,7 @@
                                
                                     @foreach($usersDetails as $user)
                                         <tr class="user{{$user->id}}">
-                                            <td class="text-center"> {{$user->id}} </td>
+                                            <td class="text-center"> {{$id ++}} </td>
                                             <td class="text-center"> {{$user->first_name}} {{$user->second_name}}</td>
                                             <td class="text-center"> {{$user->gender}}</td>
                                             <td class="text-center">{{$user->email}} </td>

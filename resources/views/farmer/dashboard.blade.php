@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">{{$total_Amount_now}}</div>
-                                    <div>Total Milk</div>
+                                    <div>Total Milk Delivered</div>
                                 </div>
                             </div>
                         </div>

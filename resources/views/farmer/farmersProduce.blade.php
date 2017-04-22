@@ -28,15 +28,13 @@
                     <table id="myProduce" class="table table-striped table no-margin" cellspacing="0" width="100%">
                        <thead>
                          <tr class = "success">
-                            <th> ID </th>
-                            <th> Name </th>
-                            <th> ID No </th>
-                            <th> Dairy Number</th>
-                            <th> Milk Weight</th>
-                            <th> Milk Rate</th>
-                            <th> Total Amount</th>
-                            <th> Milk Condition</th>
-                            <th> Created At</th>
+                            <th class="text-center"> ID </th>
+                            <th class="text-center"> Dairy Number</th>
+                            <th class="text-center"> Milk Weight</th>
+                            <th class="text-center"> Milk Rate</th>
+                            <th class="text-center"> Total Amount</th>
+                            <th class="text-center"> Milk Condition</th>
+                            <th class="text-center"> Created At</th>
                          </tr>
                        </thead>
 
@@ -44,15 +42,13 @@
                        
                             @foreach($farmersProduce as $user)
                                 <tr>
-                                    <td> {{$user->id}} </td>
-                                    <td> {{$user->farmerName}}</td>
-                                    <td> {{$user->farmer_ID}}</td>
-                                    <td> {{$user->farmerDairyNum}}</td>
-                                    <td> {{$user->milk_weight}}</td>
-                                     <td>{{$user->milk_Rate}} </td>
-                                    <td> {{$user->total_Amount}}</td>
-                                    <td> {{$user->milk_condition}}</td>
-                                    <td> {{$user->created_at}} </td>
+                                    <td class="text-center"> {{$id ++}} </td>
+                                    <td class="text-center"> {{$user->farmerDairyNum}}</td>
+                                    <td class="text-center"> {{$user->milk_weight}}</td>
+                                    <td class="text-center">{{$user->milk_Rate}} </td>
+                                    <td class="text-center"> {{$user->total_Amount}}</td>
+                                    <td class="text-center"> {{$user->milk_condition}}</td>
+                                    <td class="text-center"> {{$user->created_at}} </td>
                                     
                                 </tr>
                             @endforeach

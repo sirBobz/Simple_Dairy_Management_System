@@ -18,8 +18,11 @@
 
         <div class="box box-purple">
             <div class="box-header with-border">
-                <h3 class="box-title">Reports</h3>
+                <h3 class="box-title"></h3>
                 <button type="button" class="btn btn-facebook btn-flat btn-sm" data-toggle="modal" data-target="#addUser">Add Admin</button>
+
+                <a href="change-password" role="button" class="btn btn-facebook btn-flat btn-sm pull-right"><span class="glyphicon glyphicon-edit"> Password</a>
+                
                 <!--  Initialize Table ID counter -->
          <?php $id = 1; ?>
             <!-- /.box-header -->
@@ -46,7 +49,7 @@
                        
                             @foreach($usersDetails as $user)
                                 <tr>
-                                    <td> {{$user->id}} </td>
+                                    <td> {{$id ++}} </td>
                                     <td> {{$user->first_name}} {{$user->second_name}} {{$user->third_name}}</td>
                                     <td> {{$user->gender}}</td>
                                      <td>{{$user->email}} </td>
@@ -65,7 +68,6 @@
                         </tbody>
                     </table>
 
-                    <div class="pagination"> {{ $usersDetails->links() }} </div>
                 </div>
                 <!-- /.table-responsive -->
             </div>    

@@ -22,8 +22,13 @@ Auth::routes();
 Route::get('/userAuth', 'Auth\AuthLogController@userAuth');
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify'); 
 
+Route::get('/organization/return-view/change-password', function() {return view('auth.passwords.change-password'); });
+Route::post('/organization/return-view/change-password', 'Auth\UpdatePasswordController@update');
+
 
 Route::get('/milk-details/chart/data', 'shared\ChartsController@ChartData');
+
+
 
 
 //SuperAdmin Routes
@@ -66,3 +71,15 @@ Route::get('/organization/return-view/user-details', 'farmers\FarmerController@f
 Route::get('/organization/return-view/produce-records', 'farmers\FarmerController@farmersProduce');
 Route::get('/organization/return-view/farmer-reports/select-by-date', 'farmers\FarmerController@selectReportsByDate');
 Route::get('/organization/return-view/farmer-users', 'farmers\FarmerController@farmusers');
+
+
+
+Route::get('/organization/return-view/pdf-view', array('as'=>'pdfview','uses'=>'farmers\FarmerProcessingController@pdfview'));
+
+
+
+
+
+
+
+

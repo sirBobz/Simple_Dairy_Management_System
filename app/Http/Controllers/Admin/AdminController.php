@@ -106,7 +106,7 @@ class AdminController extends Controller
      */
     public function adminUsers()
     {
-        $usersDetails = User::where('user_type', '=', 'userAdmin')->orderBy('created_at', 'desc')->paginate(10);
+        $usersDetails = User::where('user_type', '=', 'userAdmin')->get();
         return view('admin.adminUsers',
             [
                'usersDetails'=>$usersDetails,

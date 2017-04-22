@@ -17,6 +17,11 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    
+
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css">
+
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
@@ -184,27 +189,52 @@
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- DataTables -->
-        <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
         <!-- Bootstrap JavaScript -->
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-         <script>
-              $(document).ready(function() {
-                $('#farmersProduce').DataTable();
+       <script src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+       <script src="//cdn.datatables.net/buttons/1.3.1/js/buttons.flash.min.js"></script>
+       <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+       <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+       <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+       <script src="//cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
+       <script src="//cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"></script>
+   
+        <script type="text/javascript">
+            $(document).ready(function() {
+            $('#farmersProduce').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
             } );
-         </script>
-
-         <script>
-              $(document).ready(function() {
-                $('#farmersDetails').DataTable();
-            } );
+        } );
         </script>
 
-        <script>
-              $(document).ready(function() {
-                $('#adminUsers').DataTable();
+        <script type="text/javascript">
+            $(document).ready(function() {
+            $('#farmersDetails').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
             } );
-         </script>
+        } );
+        </script>
+
+         <script type="text/javascript">
+            $(document).ready(function() {
+            $('#adminUsers').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            } );
+        } );
+        </script>
+
+
 
         <!-- App scripts -->
         @stack('scripts')
@@ -230,6 +260,8 @@
           });
         });
         </script>
+
+
         <!-- App scripts -->
         @stack('scripts')
 

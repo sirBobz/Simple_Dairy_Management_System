@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,21 +9,20 @@
 <body>
   
 <div class="container">
-<br/>
-	<a href="{{ route('pdfview',['download'=>'pdf']) }}" class="btn btn-success btn-sm">
+    <br/>
+    <a href="{{ route('pdfview',['download'=>'pdf']) }}" class="btn btn-success btn-sm">
       <span class="glyphicon glyphicon-download-alt"></span> Download PDF 
     </a>
-    <br/><br/>
+	<br/><br/>
     <div class="table-responsive">
 	<table id="farmersDetails" class="table table-striped table no-margin" cellspacing="0" width="100%">
        <thead>
          <tr class ="success">
-			      <th class="text-center"> ID </th>
+			<th class="text-center"> ID </th>
             <th class="text-center"> Name </th>
             <th class="text-center"> ID No.</th>
             <th class="text-center"> Dairy No.</th>
             <th class="text-center"> Milk Weight</th>
-            
             <th class="text-center"> Total Amount</th>
             
 		</tr>
@@ -37,7 +35,6 @@
             <td class="text-center">{{$item->farmer_ID}}</td>
             <td class="text-center">{{$item->farmerDairyNum}}</td>
             <td class="text-center">{{$item->total_milk}}</td>
-            
             <td class="text-center">{{$item->amount}}</td>
             
 		</tr>

@@ -32,6 +32,7 @@ class FarmerController extends Controller
         $userId = Auth::user()->id;
 
         $farmersDetails = User::where('id', '=', $userId)->first();
+        
         $total_Amount_now = $farmersDetails->total_milk;
 
         $total_milk_per_month = DB::table('milkDetails')

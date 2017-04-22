@@ -17,6 +17,10 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css">
+
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 
@@ -129,7 +133,7 @@
                     <img src="{{ asset('img/avatar.jpg') }}" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>{{ Auth::user()->first_name }}</p>
+                    <p>{{ Auth::user()->first_name }} </p>
                     <a href="{{ url('/organization/return-view/admin-dashboard') }}"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
@@ -141,10 +145,7 @@
                     <a href="{{ url('/organization/return-view/user-dashboard') }}">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                 </li>
-                <li class="treeview">
-                    <a href="{{ url('/organization/return-view/user-details') }}">
-                        <i class="fa fa-university"></i> <span>My Details</span></a>
-                </li>
+                
                 <li class="treeview">
                     <a href="{{ url('/organization/return-view/produce-records') }}">
                         <i class="fa fa-money"></i> <span>Milk Records</span></a>
@@ -152,6 +153,10 @@
                 <li class="treeview">
                     <a href="{{ url('/organization/return-view/farmer-reports/select-by-date') }}">
                         <i class="fa fa-bar-chart"></i> <span>Reports</span></a>
+                </li>
+                <li class="treeview">
+                    <a href="{{ url('/organization/return-view/user-details') }}">
+                        <i class="fa fa-users"></i> <span>My Details</span></a>
                 </li>
 
             </ul>
@@ -164,59 +169,53 @@
                 @yield('content')
 
         </div>
-   <footer class="site-footer">
-           <div class="text-center">
-             &copy;  {{date("Y") }}  &emsp; &emsp; Version 1.0.0
-           </div>
-           
-   </footer>
+           <footer class="site-footer">
+                   <div class="text-center">
+                     &copy;  {{date("Y") }}  &emsp; &emsp; Version 1.0.0
+                   </div>
+                   
+           </footer>
             <!--footer end-->
 </div>
 
-
-<!-- jQuery 2.2.3 -->
-<!-- <script src="{{ asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script> -->
-<!-- Bootstrap 3.3.6 -->
-<!-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> -->
-<!-- FastClick -->
-<!-- <script src="{{ asset('plugins/fastclick/fastclick.js') }}"></script> -->
-<!-- Main App -->
-<!-- <script src="{{ asset('js/app.min.js') }}"></script> -->
-<!-- Sparkline -->
-<!-- <script src="{{ asset('plugins/sparkline/jquery.sparkline.min.js') }}"></script> -->
-<!-- jvectormap -->
-<!-- <script src="{{ asset('plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
-<script src="{{ asset('plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script> -->
-<!-- SlimScroll 1.3.0 -->
-<!-- <script src="{{ asset('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script> -->
-<!-- ChartJS 1.0.1 -->
-<!-- <script src="{{ asset('plugins/chartjs/Chart.min.js') }}"></script> -->
-<!-- Main dashboard demo -->
-<!-- <script src="{{ asset('js/dashboard.js') }}"></script> -->
-<!-- Main for demo purposes -->
-<!-- <script src="{{ asset('js/demo.js') }}"></script> -->
-
-<!-- Date time range picker js -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script> -->
-
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- DataTables -->
-        <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
         <!-- Bootstrap JavaScript -->
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-        <script>
-              $(document).ready(function() {
-                $('#userDetails').DataTable();
+       <script src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+       <script src="//cdn.datatables.net/buttons/1.3.1/js/buttons.flash.min.js"></script>
+       <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+       <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+       <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+       <script src="//cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
+       <script src="//cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"></script>
+   
+        <script type="text/javascript">
+            $(document).ready(function() {
+            $('#myProduce').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
             } );
-         </script>
+        } );
+        </script>
 
-         <script>
-              $(document).ready(function() {
-                $('#myProduce').DataTable();
+         <script type="text/javascript">
+            $(document).ready(function() {
+            $('#userDetails').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
             } );
-         </script>
+        } );
+        </script>
+
+
 
          <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
