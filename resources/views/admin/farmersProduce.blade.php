@@ -12,6 +12,14 @@
             <li><a href="{{ url('organization/return-view/admin-dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li class="active">Milk Records</li>
         </ol>
+        <!-- Congrats message -->
+        <div class="container">
+            @if (session('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            @endif
+        </div>
 
     </section>
 
@@ -37,7 +45,7 @@
                             <th class="text-center">Total Amount</th>
                             <th class="text-center">Milk Condition</th>
                             <th class="text-center">Created At</th>
-                            <!-- <th class="text-center">Action</th> -->
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,14 +60,12 @@
                             <td class="text-center">{{$item->total_Amount}}</td>
                             <td class="text-center">{{$item->milk_condition}}</td>
                             <td class="text-center">{{$item->created_at}}</td>
-                            <!-- <td class="text-center"><button class="edit-modal btn btn-info"
-                                    data-info="{{$item->id}},{{$item->farmerName}},{{$item->farmer_ID}},{{$item->farmerDairyNum}},{{$item->milk_weight}},{{$item->milk_Rate}},{{$item->total_Amount}},{{$item->milk_condition}},{{$item->created_at}}">
-                                    <span class="glyphicon glyphicon-edit"></span> Edit
-                                </button>
-                                <button class="delete-modal btn btn-danger"
-                                    data-info="{{$item->id}},{{$item->farmerName}},{{$item->farmer_ID}},{{$item->farmerDairyNum}},{{$item->milk_weight}},{{$item->milk_Rate}},{{$item->total_Amount}},{{$item->milk_condition}},{{$item->created_at}}">
-                                    <span class="glyphicon glyphicon-trash"></span> Delete
-                                </button></td> -->
+                            <td class="text-center"><form action="delete-farmer-produce/{{$item->id}}" method='post'>
+                            {{csrf_field()}}
+                            <button type="submit" class="delete-modal btn btn-danger btn-sm">
+                               <span class="glyphicon glyphicon-trash"> Delete</span>
+                            </button></form>
+                            </td>
                         </tr>
                         @endforeach
                         </tbody>

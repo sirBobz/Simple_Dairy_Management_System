@@ -19,11 +19,12 @@
         <div class="box box-purple">
             <div class="box-header with-border">
                 <h3 class="box-title">Reports</h3>
+                <button type="button" class="btn btn-facebook btn-flat btn-sm" data-toggle="modal" data-target="#addUser">Add Admin</button>
                 <!--  Initialize Table ID counter -->
          <?php $id = 1; ?>
             <!-- /.box-header -->
             <div class="box-body">
-            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#addUser">Add Admin</button>
+            
                 <div class="table-responsive">
                     <table id="adminUsers" class="table table-striped table no-margin" cellspacing="0" width="100%">
                        <thead>
@@ -42,7 +43,7 @@
                        </thead>
 
                       <tbody>
-                        <tr>
+                       
                             @foreach($usersDetails as $user)
                                 <tr>
                                     <td> {{$user->id}} </td>
@@ -151,7 +152,11 @@
                             <label for="gender" class="col-md-4 control-label">Gender</label>
 
                             <div class="col-md-6">
-                                <input id="gender" type="text" class="form-control" name="gender" value="{{ old('gender') }}" required autofocus>
+                               <select required="required" name="gender" id="gender" class="form-control" title="Please set the gender">
+                                  <option>Select the Gender</option>
+                                   <option value="Male">Male</option>
+                                   <option value="Female">Female</option>
+                               </select>
 
                                 @if ($errors->has('gender'))
                                     <span class="help-block">

@@ -120,7 +120,7 @@
         <!-- /.row -->
 
         <!-- TABLE: PAYMENTS -->
-        
+         <canvas id="Milk-details-graph" width="1000" height="400"></canvas>
         
         <!-- /.box -->
 

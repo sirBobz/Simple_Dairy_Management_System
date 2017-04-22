@@ -23,6 +23,8 @@ Route::get('/userAuth', 'Auth\AuthLogController@userAuth');
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify'); 
 
 
+Route::get('/milk-details/chart/data', 'shared\ChartsController@ChartData');
+
 
 //SuperAdmin Routes
 
@@ -55,6 +57,7 @@ Route::get('/organization/return-view/admin-settings', 'Admin\AdminController@se
 Route::post('/search-farmer-details', 'Admin\AdminProcessingController@searchFarmer');  
 Route::post('/organization/produce-details', 'Admin\AdminProcessingController@validateFormRequest');
 Route::get('pdfview', array('as'=>'pdfview','uses'=>'Admin\AdminProcessingController@pdfview'));
+Route::post('organization/return-view/delete-farmer-produce/{id}','Admin\AdminProcessingController@deleteProduceRecord');
 
 
 //Farmer Routes

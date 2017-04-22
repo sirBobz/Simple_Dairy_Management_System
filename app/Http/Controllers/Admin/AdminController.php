@@ -12,7 +12,7 @@ use Carbon\Carbon;
 
 class AdminController extends Controller
 {
-    /**
+    /* *
      * Create a new controller instance.
      *
      * @return void
@@ -45,10 +45,9 @@ class AdminController extends Controller
 
         $total_amount_this_month = DB::table('milkDetails')
               ->whereraw('MONTH(created_at) = ?', [date('n')])
-              ->sum('total_Amount');    
+              ->sum('total_Amount');
 
-
-
+        
         return view('admin.dashboard',
             [
              'number_farmers'=>$number_farmers,

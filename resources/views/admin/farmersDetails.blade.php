@@ -5,10 +5,10 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
 
-        <h1>Details</h1>
+        <h1>User Details</h1>
         <ol class="breadcrumb">
             <li><a href="{{ url('organization/return-view/admin-dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="active">Farmers Details</li>
+            <li class="active">User Details</li>
         </ol>
 
         <!-- Congrats message -->
@@ -27,8 +27,8 @@
 
         <div class="box box-purple">
             <div class="box-header with-border">
-                <h3 class="box-title">Reports</h3>
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addUser">Add Farmer</button>
+                <h3 class="box-title"></h3>
+                <button type="button" class="btn btn-facebook btn-flat btn-sm" data-toggle="modal" data-target="#addUser"><span class="glyphicon glyphicon-user"></span> Add User</button>
 
                     <!-- /.box-header -->
                     <?php $id = 1; ?>
@@ -53,9 +53,9 @@
                                </thead>
 
                               <tbody>
-                                <tr>
+                               
                                     @foreach($usersDetails as $user)
-                                        <tr>
+                                        <tr class="user{{$user->id}}">
                                             <td class="text-center"> {{$user->id}} </td>
                                             <td class="text-center"> {{$user->first_name}} {{$user->second_name}}</td>
                                             <td class="text-center"> {{$user->gender}}</td>
@@ -72,7 +72,7 @@
                                             </td>        
                                             <td class="text-center"> {{$user->created_at}} </td>
                                             <td class="text-center"> <button type="button" class="btn btn-facebook btn-flat btn-sm" data-toggle="modal"
-                                data-target="#setAccountModal{{$user->id}}">Milk Details
+                                data-target="#setAccountModal{{$user->id}}"><span class="glyphicon glyphicon-edit"></span> Update
                                     </button>
                                     <!-- Account Set Up Modal -->
                     <div class="modal fade" id="setAccountModal{{$user->id}}" role="dialog">
@@ -82,7 +82,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Milk for {{$user->first_name}} {{$user->second_name}} {{$user->third_name}}</h4>
+                                    <h4 class="modal-title">Milk for {{$user->first_name}} {{$user->second_name}}</h4>
                                 </div>
                                 <div class="modal-body">
                                     <form class="form-horizontal" role="form" method="POST"
@@ -262,7 +262,11 @@
                             <label for="gender" class="col-md-4 control-label">Gender</label>
 
                             <div class="col-md-6">
-                                <input id="gender" type="text" class="form-control" name="gender" value="{{ old('gender') }}" required autofocus>
+                               <select required="required" name="gender" id="gender" class="form-control" title="Please set the gender">
+                                  <option>Select the Gender</option>
+                                   <option value="Male">Male</option>
+                                   <option value="Female">Female</option>
+                               </select>
 
                                 @if ($errors->has('gender'))
                                     <span class="help-block">

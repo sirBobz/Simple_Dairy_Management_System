@@ -172,12 +172,12 @@
                 @yield('content')
 
         </div>
-   <footer class="site-footer">
-           <div class="text-center">
-             &copy;  {{date("Y") }}  &emsp; &emsp; Version 1.0.0
-           </div>
-           
-   </footer>
+           <footer class="site-footer">
+                   <div class="text-center">
+                     &copy;  {{date("Y") }}  &emsp; &emsp; Version 1.0.0
+                   </div>
+                   
+           </footer>
             <!--footer end-->
 </div>
 
@@ -230,6 +230,8 @@
           });
         });
         </script>
+
+    
 
         <!-- App scripts -->
         @stack('scripts')

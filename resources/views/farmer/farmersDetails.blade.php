@@ -42,7 +42,7 @@
                        </thead>
 
                       <tbody>
-                        <tr>
+                       
                             @foreach($usersDetails as $user)
                                 <tr>
                                     <td> {{$id ++}} </td>

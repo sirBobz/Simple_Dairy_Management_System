@@ -133,4 +133,15 @@ class AdminProcessingController extends Controller
 
         return view('Downloads.adminPdf');
     }
+
+    public function deleteProduceRecord($id, Request $request)
+    {
+     $userEmail = Auth::user()->email;
+
+     $user_milk_Details = MilkDetail::find($id);
+     $user_milk_Details->delete();
+     
+     return redirect('/organization/return-view/farmers-produce')->with('message', 'Details Deleted Successfully');
+
+    }
 }

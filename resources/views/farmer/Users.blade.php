@@ -16,7 +16,7 @@
          <?php $id = 1; ?>
             <!-- /.box-header -->
             <div class="box-body">
-            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#addUser">Add Admin</button>
+            <button type="button" class="btn btn-facebook btn-flat btn-sm" data-toggle="modal" data-target="#addUser">Add Admin</button>
                 <div class="table-responsive">
                     <table id="userDetails" class="table table-striped table no-margin" cellspacing="0" width="100%">
                        <thead>

@@ -41,7 +41,7 @@
                        </thead>
 
                       <tbody>
-                        <tr>
+                       
                             @foreach($farmersProduce as $user)
                                 <tr>
                                     <td> {{$user->id}} </td>
