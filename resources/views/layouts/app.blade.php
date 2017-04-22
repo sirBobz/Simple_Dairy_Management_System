@@ -79,7 +79,14 @@
         </nav>
 
         @yield('content')
+           <footer class="site-footer">
+              <div class="text-center">
+                &copy; {{date("Y") }}  
+              </div>
+           
+          </footer>
     </div>
+
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
