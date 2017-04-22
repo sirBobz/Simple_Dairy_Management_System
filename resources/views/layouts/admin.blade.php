@@ -180,39 +180,8 @@
    </footer>
             <!--footer end-->
 </div>
-<!-- <script src="//code.jquery.com/jquery-1.12.3.js"></script> -->
 
-
-
-        <!-- jQuery 2.2.3 -->
-        <!-- <script src="{{ asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script> -->
-        <!-- Bootstrap 3.3.6 -->
-       <!--  <script src="{{ asset('js/bootstrap.min.js') }}"></script> -->
-        <!-- FastClick -->
-        <!-- <script src="{{ asset('plugins/fastclick/fastclick.js') }}"></script> -->
-        <!-- Main App -->
-        <!-- <script src="{{ asset('js/app.min.js') }}"></script> -->
-        <!-- Sparkline -->
-        <!-- <script src="{{ asset('plugins/sparkline/jquery.sparkline.min.js') }}"></script> -->
-        <!-- jvectormap -->
-        <!-- <script src="{{ asset('plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
-        <script src="{{ asset('plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script> -->
-        <!-- SlimScroll 1.3.0 -->
-        <!-- <script src="{{ asset('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script> -->
-        <!-- ChartJS 1.0.1 -->
-        <!-- <script src="{{ asset('plugins/chartjs/Chart.min.js') }}"></script> -->
-        <!-- Main dashboard demo -->
-        <!-- <script src="{{ asset('js/dashboard.js') }}"></script> -->
-        <!-- Main for demo purposes -->
-        <!-- <script src="{{ asset('js/demo.js') }}"></script> -->
-        
-
-
-        <!-- <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-        <script
-            src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script> -->
-
-                    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- DataTables -->
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
@@ -236,16 +205,10 @@
                 $('#adminUsers').DataTable();
             } );
          </script>
-        
 
-        <!-- Date time range picker js -->
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
- -->
         <!-- App scripts -->
         @stack('scripts')
 
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
- -->
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
         <script type="text/javascript">
         $(function() {
