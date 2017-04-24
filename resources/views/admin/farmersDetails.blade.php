@@ -94,7 +94,7 @@
                                             <label for="milk_weight" class="col-md-4 control-label">Weight</label>
 
                                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <input id="milk_weight" type="number" placeholder="eg: 100" class="form-control"
+                                                <input id="milk_weight" maxlength="3" type="number" placeholder="eg: 100" class="form-control"
                                                        name="milk_weight" value="{{ old('milk_weight') }}"
                                                        title="Please add milk weight" required autofocus>
 
@@ -110,7 +110,7 @@
                                             <label for="milk_condition" class="col-md-4 control-label">Condition</label>
 
                                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <input id="milk_condition" type="text" placeholder="eg: Okay" class="form-control"
+                                                <input id="milk_condition" maxlength="20" type="text" placeholder="eg: Okay" class="form-control"
                                                        name="milk_condition" value="{{ old('milk_condition') }}"
                                                        title="Please indicate milk Condition" required autofocus>
 
@@ -127,7 +127,7 @@
 
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <input id="milk_Rate" type="number" placeholder="eg: 100" class="form-control"
-                                                       name="milk_Rate" value="{{ old('milk_Rate') }}"
+                                                       name="milk_Rate" maxlength="3" value="{{ old('milk_Rate') }}"
                                                        title="Please add milk rate" required autofocus>
 
                                                 @if ($errors->has('milk_Rate'))
@@ -205,7 +205,7 @@
                             <label for="first_name" class="col-md-4 control-label">First Name</label>
 
                             <div class="col-md-6">
-                                <input id="first_name" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" required autofocus>
+                                <input id="first_name" maxlength="15" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" required autofocus>
 
                                 @if ($errors->has('first_name'))
                                     <span class="help-block">
@@ -219,7 +219,7 @@
                             <label for="second_name" class="col-md-4 control-label">Second Name</label>
 
                             <div class="col-md-6">
-                                <input id="second_name" type="text" class="form-control" name="second_name" value="{{ old('second_name') }}" required autofocus>
+                                <input id="second_name" maxlength="15" type="text" class="form-control" name="second_name" value="{{ old('second_name') }}" required autofocus>
 
                                 @if ($errors->has('second_name'))
                                     <span class="help-block">
@@ -233,7 +233,7 @@
                             <label for="third_name" class="col-md-4 control-label">Last Name</label>
 
                             <div class="col-md-6">
-                                <input id="third_name" type="text" class="form-control" name="third_name" value="{{ old('third_name') }}" autofocus>
+                                <input id="third_name" maxlength="15" type="text" class="form-control" name="third_name" value="{{ old('third_name') }}" autofocus>
 
                                 @if ($errors->has('third_name'))
                                     <span class="help-block">
@@ -249,7 +249,7 @@
                             <label for="id_number" class="col-md-4 control-label">ID Number</label>
 
                             <div class="col-md-6">
-                                <input id="id_number" type="number" class="form-control" name="id_number" value="{{ old('id_number') }}" required autofocus>
+                                <input id="id_number" maxlength="10" type="number" class="form-control" name="id_number" value="{{ old('id_number') }}" required autofocus>
 
                                 @if ($errors->has('id_number'))
                                     <span class="help-block">
@@ -281,7 +281,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" maxlength="20" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -295,7 +295,7 @@
                             <label for="farmer_dairy_no" class="col-md-4 control-label">Dairy Number</label>
 
                             <div class="col-md-6">
-                                <input id="farmer_dairy_no" type="number" class="form-control" name="farmer_dairy_no" value="{{ old('farmer_dairy_no') }}" required autofocus>
+                                <input id="farmer_dairy_no" maxlength="15" type="number" class="form-control" name="farmer_dairy_no" value="{{ old('farmer_dairy_no') }}" required autofocus>
 
                                 @if ($errors->has('farmer_dairy_no'))
                                     <span class="help-block">
@@ -309,7 +309,7 @@
                             <label for="box_number" class="col-md-4 control-label">Box Number</label>
 
                             <div class="col-md-6">
-                                <input id="box_number" type="number" class="form-control" name="box_number" value="{{ old('box_number') }}"  autofocus>
+                                <input id="box_number" maxlength="15" type="number" class="form-control" name="box_number" value="{{ old('box_number') }}"  autofocus>
 
                                 @if ($errors->has('box_number'))
                                     <span class="help-block">
@@ -323,7 +323,7 @@
                             <label for="zip_code" class="col-md-4 control-label">Zip Code</label>
 
                             <div class="col-md-6">
-                                <input id="zip_code" type="number" class="form-control" name="zip_code" value="{{ old('zip_code') }}"  autofocus>
+                                <input id="zip_code" maxlength="10" type="number" class="form-control" name="zip_code" value="{{ old('zip_code') }}"  autofocus>
 
                                 @if ($errors->has('zip_code'))
                                     <span class="help-block">
@@ -337,7 +337,7 @@
                             <label for="postal_town" class="col-md-4 control-label">Location</label>
 
                             <div class="col-md-6">
-                                <input id="postal_town" type="text" class="form-control" name="postal_town" value="{{ old('postal_town') }}"  autofocus>
+                                <input id="postal_town" maxlength="15" type="text" class="form-control" name="postal_town" value="{{ old('postal_town') }}"  autofocus>
 
                                 @if ($errors->has('postal_town'))
                                     <span class="help-block">

@@ -59,7 +59,7 @@ class RegisterController extends Controller
             'gender' => 'required|max:6',
             'id_number' => 'required|numeric|unique:users',
             'box_number' => 'sometimes',
-            'zip_code' => 'sometimes|digits:5',
+            'zip_code' => 'sometimes',
             'postal_town' => 'sometimes',
             'email' => 'required|email|max:25|unique:users',
             'farmer_dairy_no' => 'required|numeric|unique:users',

@@ -64,7 +64,7 @@
                             {{csrf_field()}}
                             <button type="submit" class="delete-modal btn btn-danger btn-sm"
                             onclick="return confirm('Do You Want To Delete {{$item->farmerName}} Record?');"
-                            <span class="glyphicon glyphicon-trash"> Delete</span>    
+                            <span class="glyphicon glyphicon-trash"> Delete</span>   
                             </button></form>
                             </td>
                         </tr>

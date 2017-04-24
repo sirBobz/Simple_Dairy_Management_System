@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-
+     
     <!-- Content Header (Page header) -->
     <section class="content-header">
 
@@ -120,7 +120,7 @@
         <!-- /.row -->
 
         <!-- TABLE: PAYMENTS -->
-         <canvas id="Milk-details-graph" width="1000" height="400"></canvas>
+        
         
         <!-- /.box -->
 
