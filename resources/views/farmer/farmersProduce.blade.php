@@ -29,10 +29,10 @@
                        <thead>
                          <tr class = "success">
                             <th class="text-center"> ID </th>
-                            <th class="text-center"> Dairy Number</th>
+                            <th class="text-center"> Milk ID</th>
                             <th class="text-center"> Milk Weight</th>
                             <th class="text-center"> Milk Rate</th>
-                            <th class="text-center"> Total Amount</th>
+                            <th class="text-center"> Amount Payable</th>
                             <th class="text-center"> Milk Condition</th>
                             <th class="text-center"> Created At</th>
                          </tr>

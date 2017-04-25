@@ -61,7 +61,7 @@ class RegisterController extends Controller
             'box_number' => 'sometimes',
             'zip_code' => 'sometimes',
             'postal_town' => 'sometimes',
-            'email' => 'required|email|max:25|unique:users',
+            'email' => 'required|email|max:35|unique:users',
             'farmer_dairy_no' => 'required|numeric|unique:users',
         ]);
     }
@@ -103,8 +103,9 @@ class RegisterController extends Controller
         $validator = $this->validator($request->all());
         if ($validator->fails()) 
         {   
+          \Log::Info('Validator Fails; ');
             $this->throwValidationException($request, $validator);
-            \Log::Info('Validator Fails; ');
+            
         }
         
         // Using database transactions is useful here because stuff happening is actually a transaction

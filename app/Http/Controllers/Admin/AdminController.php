@@ -48,21 +48,20 @@ class AdminController extends Controller
               ->sum('total_Amount');
 
 
-        $total_milk = MilkDetail::select(DB::raw("SUM(milk_weight) as milk_weight, MONTH(created_at) as month"))
-            ->orderBy("created_at")
-            ->groupBy(DB::raw("MONTH(created_at)"))
-            ->get()->toArray();
+        //$total_milk = MilkDetail::select(DB::raw("SUM(milk_weight) as milk_weight, MONTH(created_at) as month"))
+            // ->orderBy("created_at")
+            // ->groupBy(DB::raw("MONTH(created_at)"))
+            // ->get()->toArray();
     
-         print_r($total_milk);
              
-        // return view('admin.dashboard',
-        //     [
-        //      'number_farmers'=>$number_farmers,
-        //      'total_milk_per_month'=>$total_milk_per_month,
-        //      'amount_collected_today'=>$amount_collected_today,
-        //      'total_amount_this_month'=>$total_amount_this_month,
-        //      'total_milk'=>json_encode($total_milk,JSON_NUMERIC_CHECK),
-        //     ]);
+        return view('admin.dashboard',
+            [
+             'number_farmers'=>$number_farmers,
+             'total_milk_per_month'=>$total_milk_per_month,
+             'amount_collected_today'=>$amount_collected_today,
+             'total_amount_this_month'=>$total_amount_this_month,
+             //'total_milk'=>json_encode($total_milk,JSON_NUMERIC_CHECK),
+            ]);
     }
 
     /**

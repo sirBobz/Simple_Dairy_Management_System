@@ -93,7 +93,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
-                            <label for="first_name"  class="col-md-4 control-label">First Name</label>
+                            <label for="first_name" class="col-md-4 control-label">First Name</label>
 
                             <div class="col-md-6">
                                 <input id="first_name" maxlength="15" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" required autofocus>
@@ -134,13 +134,13 @@
                             </div>
                         </div>
 
-                        <input type="hidden" name="user_type" value="userAdmin">
+                        <input type="hidden" name="user_type" value="userAdmin">  
 
                         <div class="form-group{{ $errors->has('id_number') ? ' has-error' : '' }}">
                             <label for="id_number" class="col-md-4 control-label">ID Number</label>
 
                             <div class="col-md-6">
-                                <input id="id_number" maxlength="15" type="number" class="form-control" name="id_number" value="{{ old('id_number') }}" required autofocus>
+                                <input id="id_number" maxlength="10" type="number" class="form-control" name="id_number" value="{{ old('id_number') }}" required autofocus>
 
                                 @if ($errors->has('id_number'))
                                     <span class="help-block">
@@ -169,10 +169,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">E-Mail</label>
 
                             <div class="col-md-6">
-                                <input id="email" maxlength="15" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" maxlength="30" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -181,12 +181,26 @@
                                 @endif
                             </div>
                         </div>
-                    
-                        <div class="form-group{{ $errors->has('box_number') ? ' has-error' : '' }}">
-                            <label for="box_number" class="col-md-4 control-label">PO BOX</label>
+
+                        <div class="form-group{{ $errors->has('farmer_dairy_no') ? ' has-error' : '' }}">
+                            <label for="farmer_dairy_no" class="col-md-4 control-label">Dairy Number</label>
 
                             <div class="col-md-6">
-                                <input id="box_number" maxlength="15" type="number" class="form-control" name="box_number" value="{{ old('box_number') }}" required autofocus>
+                                <input id="farmer_dairy_no" maxlength="15" type="number" class="form-control" name="farmer_dairy_no" value="{{ old('farmer_dairy_no') }}" required autofocus>
+
+                                @if ($errors->has('farmer_dairy_no'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('farmer_dairy_no') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                    
+                        <div class="form-group{{ $errors->has('box_number') ? ' has-error' : '' }}">
+                            <label for="box_number" class="col-md-4 control-label">Box Number</label>
+
+                            <div class="col-md-6">
+                                <input id="box_number" maxlength="15" type="number" class="form-control" name="box_number" value="{{ old('box_number') }}"  autofocus>
 
                                 @if ($errors->has('box_number'))
                                     <span class="help-block">
@@ -197,10 +211,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('zip_code') ? ' has-error' : '' }}">
-                            <label for="zip_code" class="col-md-4 control-label">ZIP CODE</label>
+                            <label for="zip_code" class="col-md-4 control-label">Zip Code</label>
 
                             <div class="col-md-6">
-                                <input id="zip_code" maxlength="15" type="number" class="form-control" name="zip_code" value="{{ old('zip_code') }}" required autofocus>
+                                <input id="zip_code" maxlength="10" type="number" class="form-control" name="zip_code" value="{{ old('zip_code') }}"  autofocus>
 
                                 @if ($errors->has('zip_code'))
                                     <span class="help-block">
@@ -214,7 +228,7 @@
                             <label for="postal_town" class="col-md-4 control-label">Location</label>
 
                             <div class="col-md-6">
-                                <input id="postal_town" maxlength="15" type="text" class="form-control" name="postal_town" value="{{ old('postal_town') }}" required autofocus>
+                                <input id="postal_town" maxlength="15" type="text" class="form-control" name="postal_town" value="{{ old('postal_town') }}"  autofocus>
 
                                 @if ($errors->has('postal_town'))
                                     <span class="help-block">
@@ -233,7 +247,6 @@
                                 </div>
                             </div>
                     </form>
-
                     </div>
                 </div>
 
