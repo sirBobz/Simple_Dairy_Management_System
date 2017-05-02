@@ -36,9 +36,6 @@
                             <th> Name </th>
                             <th> Gender</th>
                             <th> Email</th>
-                            <th> ID Number</th>
-                            <th> Po Box</th>
-                            <th> Total Milk</th>
                             <th> Status</th>
                             <th> Created At</th>
                             <th> Updated At</th>
@@ -53,9 +50,6 @@
                                     <td> {{$user->first_name}} {{$user->second_name}} {{$user->third_name}}</td>
                                     <td> {{$user->gender}}</td>
                                      <td>{{$user->email}} </td>
-                                    <td> {{$user->id_number}}</td>
-                                    <td> {{$user->box_number}} {{$user->zip_code}} {{$user->postal_town}}</td>
-                                    <td> {{$user->total_milk}}</td>
                                     <td> <?php if ($user->verified == 0)
                                                    { echo "Inactive";}
                                                else { echo "Active";} ?> 
@@ -118,37 +112,9 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('third_name') ? ' has-error' : '' }}">
-                            <label for="third_name" class="col-md-4 control-label">Last Name</label>
-
-                            <div class="col-md-6">
-                                <input id="third_name" maxlength="15" type="text" class="form-control" name="third_name" value="{{ old('third_name') }}" autofocus>
-
-                                @if ($errors->has('third_name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('third_name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                        </div
 
                         <input type="hidden" name="user_type" value="userAdmin">  
-
-                        <div class="form-group{{ $errors->has('id_number') ? ' has-error' : '' }}">
-                            <label for="id_number" class="col-md-4 control-label">ID Number</label>
-
-                            <div class="col-md-6">
-                                <input id="id_number" maxlength="10" type="number" class="form-control" name="id_number" value="{{ old('id_number') }}" required autofocus>
-
-                                @if ($errors->has('id_number'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('id_number') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
                         <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
                             <label for="gender" class="col-md-4 control-label">Gender</label>
@@ -158,6 +124,7 @@
                                   <option value="">Select the Gender</option>
                                    <option value="Male">Male</option>
                                    <option value="Female">Female</option>
+                                   <option value="Other">Other</option>
                                </select>
 
                                 @if ($errors->has('gender'))
@@ -182,61 +149,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('farmer_dairy_no') ? ' has-error' : '' }}">
-                            <label for="farmer_dairy_no" class="col-md-4 control-label">Dairy Number</label>
-
-                            <div class="col-md-6">
-                                <input id="farmer_dairy_no" maxlength="15" type="number" class="form-control" name="farmer_dairy_no" value="{{ old('farmer_dairy_no') }}" required autofocus>
-
-                                @if ($errors->has('farmer_dairy_no'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('farmer_dairy_no') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                    
-                        <div class="form-group{{ $errors->has('box_number') ? ' has-error' : '' }}">
-                            <label for="box_number" class="col-md-4 control-label">Box Number</label>
-
-                            <div class="col-md-6">
-                                <input id="box_number" maxlength="15" type="number" class="form-control" name="box_number" value="{{ old('box_number') }}"  autofocus>
-
-                                @if ($errors->has('box_number'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('box_number') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('zip_code') ? ' has-error' : '' }}">
-                            <label for="zip_code" class="col-md-4 control-label">Zip Code</label>
-
-                            <div class="col-md-6">
-                                <input id="zip_code" maxlength="10" type="number" class="form-control" name="zip_code" value="{{ old('zip_code') }}"  autofocus>
-
-                                @if ($errors->has('zip_code'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('zip_code') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('postal_town') ? ' has-error' : '' }}">
-                            <label for="postal_town" class="col-md-4 control-label">Location</label>
-
-                            <div class="col-md-6">
-                                <input id="postal_town" maxlength="15" type="text" class="form-control" name="postal_town" value="{{ old('postal_town') }}"  autofocus>
-
-                                @if ($errors->has('postal_town'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('postal_town') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                        
                         <hr>
                         <div class="form-group">
                                 <div class="col-lg-6 col-md-8 col-sm-12 col-md-offset-4">

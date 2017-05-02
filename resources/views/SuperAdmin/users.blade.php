@@ -1,13 +1,89 @@
-@extends('layouts.app')
+@extends('layouts.superadmin')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+
+        <h1>Admin Users</h1>
+        <ol class="breadcrumb">
+            <li><a href="{{ url('/organization/return-view/super-admin-dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li class="active">Admin Users</li>
+        </ol>
+
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-purple">
+            <div class="box-header with-border">
+                <h3 class="box-title"></h3>
+                <button type="button" class="btn btn-facebook btn-flat btn-sm" data-toggle="modal" data-target="#addUser">Add Admin</button>
+
+                <a href="change-password" role="button" class="btn btn-facebook btn-flat btn-sm pull-right"><span class="glyphicon glyphicon-edit"> Password</a>
+                
+                <!--  Initialize Table ID counter -->
+         <?php $id = 1; ?>
+            <!-- /.box-header -->
+            <div class="box-body">
+            
+                <div class="table-responsive">
+                    <table id="adminUsers" class="table table-striped table no-margin" cellspacing="0" width="100%">
+                       <thead>
+                         <tr class = "success">
+                            <th> ID </th>
+                            <th> Name </th>
+                            <th> Gender</th>
+                            <th> Email</th>
+                            <th> Status</th>
+                            <th> Created At</th>
+                            <th> Updated At</th>
+                         </tr>
+                       </thead>
+
+                      <tbody>
+                       
+                            @foreach($usersDetails as $user)
+                                <tr>
+                                    <td> {{$id ++}} </td>
+                                    <td> {{$user->first_name}} {{$user->second_name}} {{$user->third_name}}</td>
+                                    <td> {{$user->gender}}</td>
+                                     <td>{{$user->email}} </td>
+                                    <td> <?php if ($user->verified == 0)
+                                                   { echo "Inactive";}
+                                               else { echo "Active";} ?> 
+                                    </td>        
+                                    <td> {{$user->created_at}} </td>
+                                    <td> {{$user->updated_at}}</td>
+                                    
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
+                <!-- /.table-responsive -->
+            </div>    
+                
+            </div>
+        </div>
+    </section>
+    <!-- Admin User  -->
+    <div class="container">
+
+        <!-- Modal -->
+        <div class="modal fade" id="addUser" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Add User</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
@@ -36,9 +112,9 @@
                                     </span>
                                 @endif
                             </div>
-                        </div
+                        </div>
 
-                        <input type="hidden" name="user_type" value="superAdmin">  
+                        <input type="hidden" name="user_type" value="superAdmin" required="superAdmin">  
 
                         <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
                             <label for="gender" class="col-md-4 control-label">Gender</label>
@@ -84,9 +160,13 @@
                                 </div>
                             </div>
                     </form>
+                    </div>
                 </div>
+
             </div>
         </div>
+
     </div>
-</div>
+    
+
 @endsection

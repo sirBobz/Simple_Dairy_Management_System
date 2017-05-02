@@ -5,7 +5,8 @@ namespace App\Http\Controllers\farmers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\MilkDetail;
+use App\Models\Produce;
+use App\Models\FarmersDetail;
 use Auth;
 use DB;
 use Carbon\Carbon;
@@ -31,33 +32,9 @@ class FarmerController extends Controller
     {
         $userId = Auth::user()->id;
 
-        $farmersDetails = User::where('id', '=', $userId)->first();
         
-        $total_Amount_now = $farmersDetails->total_milk;
 
-        $total_milk_per_month = DB::table('milkDetails')
-               ->where('user_id', '=', $userId)
-              ->whereraw('MONTH(created_at) = ?', [date('n')])
-              ->sum('milk_weight');
-
-        $amount_collected_today = DB::table('milkDetails')
-            ->where('user_id', '=', $userId)
-            ->whereRaw('date(created_at) = ?', [Carbon::today()])
-            ->sum('milk_weight');
-
-        $total_amount_this_month = DB::table('milkDetails')
-              ->where('user_id', '=', $userId)
-              ->whereraw('MONTH(created_at) = ?', [date('n')])
-              ->sum('total_Amount');    
-
-
-        return view('farmer.dashboard',
-            [
-             'total_Amount_now'=>$total_Amount_now,
-             'total_milk_per_month'=>$total_milk_per_month,
-             'amount_collected_today'=>$amount_collected_today,
-             'total_amount_this_month'=>$total_amount_this_month,
-            ]);
+        return view('farmer.dashboard');
     }
 
     /**
@@ -83,7 +60,7 @@ class FarmerController extends Controller
     {
        $userId = Auth::user()->id;
        
-       $farmersProduce = MilkDetail::where('user_id', '=', $userId)->get();
+       $farmersProduce = Produce::where('user_id', '=', $userId)->get();
        
        return view('farmer.farmersProduce', ['farmersProduce'=>$farmersProduce]);
     }

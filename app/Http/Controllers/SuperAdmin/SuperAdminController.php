@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\SuperAdmin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -8,10 +8,10 @@ use App\Models\User;
 use App\Models\Produce;
 use App\Models\FarmersDetail;
 use Datatables;
-use DB;
+use DB, Auth;
 use Carbon\Carbon;
 
-class AdminController extends Controller
+class SuperAdminController extends Controller
 {
     /* *
      * Create a new controller instance.
@@ -22,7 +22,7 @@ class AdminController extends Controller
     
     {
     
-    $this->middleware('userAdmin', ['except' => 'login']);
+    $this->middleware('superAdmin', ['except' => 'login']);
     
     }
 
@@ -36,23 +36,25 @@ class AdminController extends Controller
     {
         
 
-
-     
+        //$total_milk = MilkDetail::select(DB::raw("SUM(milk_weight) as milk_weight, MONTH(created_at) as month"))
+            // ->orderBy("created_at")
+            // ->groupBy(DB::raw("MONTH(created_at)"))
+            // ->get()->toArray();
     
              
-        return view('admin.dashboard');
+        return view('SuperAdmin.dashboard');
     }
 
     /**
-     * Show the farmers Details and add farmers details as well.
+     * Show user admin.
      *
      * @return \Illuminate\Http\Response
      */
-    public function farmersDetails()
+    public function userAdmin()
     {
         $usersDetails = User::where('user_type', '=', 'userMilkFarmer')->get();
         
-        return view('admin.farmersDetails', 
+        return view('SuperAdmin.userAdmin', 
             [
              'usersDetails'=>$usersDetails,
             ]);
@@ -63,14 +65,15 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function farmersProduce()
+    public function produce()
     
     {
-        $ProduceDetails = Produce::all();
-      
+      $ProduceDetails = Produce::all();
        
-       return view('admin.farmersProduce',
-        ['ProduceDetails'=>$ProduceDetails]);
+       return view('SuperAdmin.farmersProduce',
+        [
+          'ProduceDetails'=>$ProduceDetails,
+        ]);
     }
     
     /**
@@ -81,7 +84,7 @@ class AdminController extends Controller
     public function selectReportsByDate()
     {
 
-        return view('admin.selectReportsByDate');
+        return view('SuperAdmin.selectReportsByDate');
     }
 
     /**
@@ -89,10 +92,10 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function adminUsers()
+    public function users()
     {
-        $usersDetails = User::where('user_type', '=', 'userAdmin')->get();
-        return view('admin.adminUsers',
+        $usersDetails = User::where('user_type', '=', 'superAdmin')->get();
+        return view('SuperAdmin.users',
             [
                'usersDetails'=>$usersDetails,
             ]);
@@ -107,7 +110,7 @@ class AdminController extends Controller
     public function setting()
     {
 
-       return view('admin.setting'); 
+       return view('SuperAdmin.setting'); 
     }
 
 }

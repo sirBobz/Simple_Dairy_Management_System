@@ -32,18 +32,12 @@ Route::get('/milk-details/chart/data', 'shared\ChartsController@ChartData');
 
 
 //SuperAdmin Routes
-
-
-
-
-
-
-
-
-
-
-
-
+Route::get('/organization/return-view/super-admin-dashboard', 'SuperAdmin\SuperAdminController@dashboard');
+Route::get('/organization/return-view/user-admin-details', 'SuperAdmin\SuperAdminController@userAdmin');
+Route::get('/organization/return-view/super-admin/farmers-produce', 'SuperAdmin\SuperAdminController@produce');
+Route::get('/organization/return-view/super-admin/reports/select-by-date', 'SuperAdmin\SuperAdminController@dashboard');
+Route::get('/organization/return-view/super-admin/settings', 'SuperAdmin\SuperAdminController@dashboard');
+Route::get('/organization/return-view/super-admin/users', 'SuperAdmin\SuperAdminController@users');
 
 
 
@@ -59,7 +53,7 @@ Route::get('/organization/return-view/admin-settings', 'Admin\AdminController@se
 
 
 //Admin form processing Routes
-Route::post('/search-farmer-details', 'Admin\AdminProcessingController@searchFarmer');  
+Route::post('/register/new-farmer', 'Admin\AdminProcessingController@RegisterFarmer');  
 Route::post('/organization/produce-details', 'Admin\AdminProcessingController@validateFormRequest');
 Route::get('pdfview', array('as'=>'pdfview','uses'=>'Admin\AdminProcessingController@pdfview'));
 Route::post('organization/return-view/delete-farmer-produce/{id}','Admin\AdminProcessingController@deleteProduceRecord');

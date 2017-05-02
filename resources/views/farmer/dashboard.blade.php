@@ -24,7 +24,7 @@
                                     <i class="fa fa-tasks fa-2x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">{{$total_milk_per_month}} </div>
+                                    <div class="huge"></div>
                                     <div>Total Weight Per Month</div>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                                     <i class="fa fa-money fa-2x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">{{$total_amount_this_month}} </div>
+                                    <div class="huge"> </div>
                                     <div>Total Amount Per Month</div>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                                     <i class="fa fa-support fa-2x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">{{$amount_collected_today}} </div>
+                                    <div class="huge"> </div>
                                     <div> Total Today</div>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                                     <i class="fa fa-tasks fa-2x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">{{$total_Amount_now}}</div>
+                                    <div class="huge"></div>
                                     <div>Total Milk Delivered</div>
                                 </div>
                             </div>

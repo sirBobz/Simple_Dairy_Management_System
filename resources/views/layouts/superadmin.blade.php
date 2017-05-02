@@ -135,7 +135,7 @@
                     <img src="{{ asset('img/avatar.jpg') }}" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p></p>
+                    <p>{{ Auth::user()->first_name }}</p>
                     <a href="{{ url('/organization/return-view/admin-dashboard') }}"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
@@ -144,27 +144,21 @@
             <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="active treeview">
-                    <a href="{{ url('/organization/return-view/admin-dashboard') }}">
+                    <a href="{{ url('/organization/return-view/super-admin-dashboard') }}">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                 </li>
                 <li class="treeview">
-                    <a href="{{ url('/organization/return-view/farmers-details') }}">
-                        <i class="fa fa-university"></i> <span>Farmers Details</span></a>
+                    <a href="{{ url('/organization/return-view/super-admin/farmers-produce') }}">
+                        <i class="fa fa-bar-chart"></i> <span> Milk Produce</span></a>
                 </li>
                 <li class="treeview">
-                    <a href="{{ url('/organization/return-view/farmers-produce') }}">
-                        <i class="fa fa-money"></i> <span>Milk Records</span></a>
+                    <a href="{{ url('/organization/return-view/user-admin-details') }}">
+                        <i class="fa fa-university"></i> <span> User Admin</span></a>
                 </li>
+             
+               
                 <li class="treeview">
-                    <a href="{{ url('/organization/return-view/reports/select-by-date') }}">
-                        <i class="fa fa-bar-chart"></i> <span>Reports</span></a>
-                </li>
-                <li class="treeview">
-                    <a href="{{ url('/organization/return-view/admin-settings') }}">
-                        <i class="fa fa-cog"></i> <span>Settings</span></a>
-                </li>
-                <li class="treeview">
-                    <a href="{{ url('/organization/return-view/admin-users') }}">
+                    <a href="{{ url('/organization/return-view/super-admin/users') }}">
                         <i class="fa fa-users"></i> <span>Users</span></a>
                 </li>
             </ul>

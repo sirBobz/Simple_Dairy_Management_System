@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.superadmin')
 
 @section('content')
      
@@ -24,7 +24,7 @@
                                     <i class="fa fa-user fa-2x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"></div>
+                                    <div class="huge"> </div>
                                     <div>Number of Farmers</div>
                                 </div>
                             </div>
@@ -118,7 +118,10 @@
             <!-- /.col -->
         </div>
         <!-- /.row -->
+
         <!-- TABLE: PAYMENTS -->
+        
+        
         <!-- /.box -->
 
     </section>

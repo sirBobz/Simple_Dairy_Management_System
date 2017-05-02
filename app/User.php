@@ -1,57 +1,63 @@
 <?php
 
+/**
+ * Created by Reliese Model.
+ * Date: Tue, 02 May 2017 05:54:41 +0300.
+ */
+
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * Class User
+ * 
+ * @property int $id
+ * @property string $user_type
+ * @property string $first_name
+ * @property string $second_name
+ * @property string $gender
+ * @property string $email
+ * @property string $password
+ * @property int $verified
+ * @property string $email_token
+ * @property string $remember_token
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * 
+ * @property \Illuminate\Database\Eloquent\Collection $farmers__details
+ *
+ * @package App\Models
+ */
 class User extends Authenticatable
 {
     use Notifiable;
+    
+    protected $casts = [
+        'verified' => 'int'
+    ];
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $hidden = [
+        'password',
+        'email_token',
+        'remember_token'
+    ];
+
     protected $fillable = [
         'user_type',
         'first_name',
         'second_name',
-        'third_name',
         'gender',
-        'id_number',
         'email',
-        'box_number',
-        'zip_code',
-        'postal_town',
-        'farmer_dairy_no',
-        'total_milk',
         'password',
-        'remember_token',
+        'verified',
         'email_token',
-        'verified'
+        'remember_token'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    public function milk_details()
+    public function farmers__details()
     {
-        return $this->hasMany(\App\Models\MilkDetail::class);
-    }
-
-    // Set the verified status to true and make the email token null
-    public function verified()
-    {
-        $this->verified = 1;
-        $this->email_token = null;
-        $this->save();
+        return $this->hasMany(\App\Models\FarmersDetail::class);
     }
 }

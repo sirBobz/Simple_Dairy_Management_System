@@ -19,6 +19,11 @@ class AuthLogController extends Controller
 
         switch($userLevel)
         {
+          case "superAdmin":
+               Log::Info("User $userEmail logged in to the Super ADMIN Account from IP Address: $ip");
+              return redirect('/organization/return-view/super-admin-dashboard');
+              break;
+
           case "userAdmin":
                Log::Info("User $userEmail logged in to the ADMIN Account from IP Address: $ip");
               return redirect('/organization/return-view/admin-dashboard');

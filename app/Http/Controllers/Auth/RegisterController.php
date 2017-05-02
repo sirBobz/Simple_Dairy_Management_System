@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -40,7 +40,7 @@ class RegisterController extends Controller
      */
      public function __construct()
       {
-        $this->middleware('userAdmin', ['except' => 'login']);
+       // $this->middleware('userAdmin', ['except' => 'login']);
       }
 
     /**
@@ -52,17 +52,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'user_type'=>'required|string|max:25',
-            'first_name' => 'required|string|max:25',
-            'second_name' => 'required|string|max:25',
-            'third_name' => 'sometimes|max:25',
-            'gender' => 'required|max:6',
-            'id_number' => 'required|numeric|unique:users',
-            'box_number' => 'sometimes',
-            'zip_code' => 'sometimes',
-            'postal_town' => 'sometimes',
-            'email' => 'required|email|max:35|unique:users',
-            'farmer_dairy_no' => 'required|numeric|unique:users',
+            'user_type'=>'required|string|max:55',
+            'first_name' => 'required|string|max:55',
+            'second_name' => 'required|string|max:55',
+            'gender' => 'required|string|max:10',
+            'email' => 'required|email|max:55|unique:users',
         ]);
     }
 
@@ -80,16 +74,10 @@ class RegisterController extends Controller
             'user_type'=>$data['user_type'],
             'first_name' => $data['first_name'],
             'second_name' => $data['second_name'],
-            'third_name' => $data['third_name'],
             'gender' => $data['gender'],
-            'id_number' => $data['id_number'],
-            'box_number' => $data['box_number'],
-            'zip_code' => $data['zip_code'],
-            'postal_town' => $data['postal_town'],
             'email' => $data['email'],
             'password' => bcrypt('password'), //default password = password
-            'email_token' => str_random(10), 
-            'farmer_dairy_no'=> $data['farmer_dairy_no'],     
+            'email_token' => str_random(10),     
         ]);
 
          
@@ -103,8 +91,9 @@ class RegisterController extends Controller
         $validator = $this->validator($request->all());
         if ($validator->fails()) 
         {   
-          \Log::Info('Validator Fails; ');
-            $this->throwValidationException($request, $validator);
+          
+            $error = $this->throwValidationException($request, $validator);
+            \Log::Info("Validator Fails; $error");
             
         }
         
@@ -113,7 +102,7 @@ class RegisterController extends Controller
         DB::beginTransaction();
         try
         {
-            
+         
             $user = $this->create($request->all());
             \Log::Info('A New User Has Been Created Successfully');
 
