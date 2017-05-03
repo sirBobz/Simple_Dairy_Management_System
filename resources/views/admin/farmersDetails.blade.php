@@ -40,14 +40,10 @@
                                <thead>
                                  <tr class = "success">
                                     <th class="text-center"> Id </th>
-                                    <th class="text-center"> Name </th>
-                                    <th class="text-center"> Gender</th>
-                                    <th class="text-center"> Email</th>
-                                    <th class="text-center"> ID</th>
+                                    <th class="text-center"> ID Number</th>
                                     <th class="text-center"> Address</th>
                                     <th class="text-center"> Dairy Number</th>
                                     <th class="text-center"> Total Milk</th>
-                                    <th class="text-center"> Status</th>
                                     <th class="text-center"> Created At</th>
                                     <th class="text-center"> Action</th>
                                 </tr>
@@ -58,19 +54,11 @@
                                     @foreach($usersDetails as $user)
                                         <tr class="user{{$user->id}}">
                                             <td class="text-center"> {{$id ++}} </td>
-                                            <td class="text-center"> {{$user->first_name}} {{$user->second_name}}</td>
-                                            <td class="text-center"> {{$user->gender}}</td>
-                                            <td class="text-center">{{$user->email}} </td>
-                                            <td class="text-center"> {{$user->id_number}}</td>
+                                            
+                                            <td class="text-center"> {{$user->farmer_ID}}</td>
                                             <td class="text-center"> {{$user->box_number}} {{$user->postal_town}}</td>
-                                            <td class="text-center"> {{$user->farmer_dairy_no}}</td>
-                                            <td class="text-center"> {{$user->total_milk}}</td>
-                                            <td> 
-                                            <?php if ($user->verified == 0)
-                                                           { echo "Inactive";}
-                                                       else { echo "Active";} 
-                                            ?> 
-                                            </td>        
+                                            <td class="text-center"> {{$user->farmerDairyNum}}</td>
+                                            <td class="text-center"> {{$user->total_milk_weight}}</td>         
                                             <td class="text-center"> {{$user->created_at}} </td>
                                             <td class="text-center"> <button type="button" class="btn btn-facebook btn-flat btn-sm" data-toggle="modal"
                                 data-target="#setAccountModal{{$user->id}}"><span class="glyphicon glyphicon-edit"></span> Update
@@ -125,7 +113,7 @@
 
                                         <div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }}">
                                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <input type="hidden" class="form-control" name="user_id" value="{{$user->id}}"
+                                                <input type="hidden" class="form-control" name="user_id" value="{{$user->user_id}}"
                                                        required autofocus>
 
                                                 @if ($errors->has('user_id'))
@@ -217,14 +205,14 @@
 
                         <input type="hidden" name="user_type" value="userMilkFarmer">
                           
-                        <div class="form-group{{ $errors->has('id_number') ? ' has-error' : '' }}">
-                            <label for="id_number" class="col-md-4 control-label">ID Number</label>
+                        <div class="form-group{{ $errors->has('farmer_ID') ? ' has-error' : '' }}">
+                            <label for="farmer_ID" class="col-md-4 control-label">ID Number</label>
                             <div class="col-md-6">
-                                <input id="id_number" maxlength="10" type="number" class="form-control" name="id_number" value="{{ old('id_number') }}" required autofocus>
+                                <input id="farmer_ID" maxlength="10" type="number" class="form-control" name="farmer_ID" value="{{ old('farmer_ID') }}" required autofocus>
 
-                                @if ($errors->has('id_number'))
+                                @if ($errors->has('farmer_ID'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('id_number') }}</strong>
+                                        <strong>{{ $errors->first('farmer_ID') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -263,15 +251,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('farmer_dairy_no') ? ' has-error' : '' }}">
-                            <label for="farmer_dairy_no" class="col-md-4 control-label">Dairy Number</label>
+                        <div class="form-group{{ $errors->has('farmerDairyNum') ? ' has-error' : '' }}">
+                            <label for="farmerDairyNum" class="col-md-4 control-label">Dairy Number</label>
 
                             <div class="col-md-6">
-                                <input id="farmer_dairy_no" maxlength="15" type="number" class="form-control" name="farmer_dairy_no" value="{{ old('farmer_dairy_no') }}" required autofocus>
+                                <input id="farmerDairyNum" maxlength="15" type="number" class="form-control" name="farmerDairyNum" value="{{ old('farmerDairyNum') }}" required autofocus>
 
-                                @if ($errors->has('farmer_dairy_no'))
+                                @if ($errors->has('farmerDairyNum'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('farmer_dairy_no') }}</strong>
+                                        <strong>{{ $errors->first('farmerDairyNum') }}</strong>
                                     </span>
                                 @endif
                             </div>

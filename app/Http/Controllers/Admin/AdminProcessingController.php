@@ -41,10 +41,10 @@ class AdminProcessingController extends Controller
           [
             'first_name' => 'required|string|max:150',
             'second_name' => 'required|string|max:191',
-            'id_number' => 'required|string|max:10|unique:farmers_Details',
+            'farmer_ID' => 'required|string|max:10|unique:farmers_Details',
             'gender'=> 'required|string|max:10',
             'email' => 'required|email|max:150|unique:users',
-            'farmer_dairy_no' => 'required|string|max:10|unique:farmers_Details',
+            'farmerDairyNum' => 'required|string|max:10|unique:farmers_Details',
             'box_number' => 'required|string|max:10',
             'postal_town'=> 'required|string|max:15',
             'user_type'=>'required|string|max:15',
@@ -59,10 +59,10 @@ class AdminProcessingController extends Controller
 
       $first_name = $request->first_name;
       $second_name = $request->second_name;
-      $id_number = $request->id_number;
+      $id_number = $request->farmer_ID;
       $gender = $request->gender;
       $email = $request->email;
-      $farmer_dairy_no = $request->farmer_dairy_no;
+      $farmer_dairy_no = $request->farmerDairyNum;
       $box_number = $request->box_number;
       $postal_town = $request->postal_town;
       $user_type = $request->user_type;
@@ -125,22 +125,36 @@ class AdminProcessingController extends Controller
 
     public function updateFarmerProduce($milk_weight, $milk_condition, $user_id)
     {
+      $UserDetails = User::where('id', '=', $user_id)->firstorfail();
+      $farmerFirstName = $UserDetails->first_name; 
+      $farmerSecondName = $UserDetails->second_name;
+      $name = "$farmerFirstName  $farmerSecondName";
 
-       
-       $produce = new Produce;
-       $produce->user_id = $user_id;
-       $produce->milk_weight = $milk_weight;
-       $produce->milk_condition = $milk_condition;
-       $produce->save();
-
-       $farmersMilkWeight = FarmersDetail::where('user_id', '=', $user_id)->value('total_milk_weight');
+      $farmersMilkWeight = FarmersDetail::where('user_id', '=', $user_id)->value('total_milk_weight');
        $new_weight = $farmersMilkWeight + $milk_weight;
 
        FarmersDetail::where('user_id', $user_id)
                    ->update(['total_milk_weight' => $new_weight]);
 
-       
 
+      $FarmerDetail = FarmersDetail::where('user_id', '=', $user_id)->firstorfail();
+      $total_milk_weight = $FarmerDetail->total_milk_weight;
+      $farmerDairyNum = $FarmerDetail->farmerDairyNum;
+      $farmer_ID = $FarmerDetail->farmer_ID;
+
+
+
+       $produce = new Produce;
+       $produce->user_id = $user_id;
+       $produce->name = $name;
+       $produce->total_milk_weight = $total_milk_weight;
+       $produce->farmerDairyNum = $farmerDairyNum;
+       $produce->farmer_ID = $farmer_ID;
+       $produce->milk_weight = $milk_weight;
+       $produce->milk_condition = $milk_condition;
+       $produce->save();
+
+       
 
    }
 
@@ -168,7 +182,7 @@ class AdminProcessingController extends Controller
     {
      $userEmail = Auth::user()->email;
 
-     $user_milk_Details = MilkDetail::find($id);
+     $user_milk_Details = Produce::find($id);
      $user_milk_Details->delete();
 
      \Log::Info("USER EMAIL $userEmail deleted the record ID $id from MilkDetail Model"); 

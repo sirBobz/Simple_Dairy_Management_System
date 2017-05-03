@@ -17,8 +17,12 @@ class CreateMilkProduceTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('milk_weight');
-            $table->string('milk_condition')->nullable();
+            $table->string('name');
+            $table->string('milk_weight')->nullable();
+            $table->string('milk_condition');
+            $table->string('farmer_ID')->nullable();
+            $table->string('farmerDairyNum');
+            $table->string('total_milk_weight')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

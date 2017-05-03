@@ -50,7 +50,7 @@ class AdminController extends Controller
      */
     public function farmersDetails()
     {
-        $usersDetails = User::where('user_type', '=', 'userMilkFarmer')->get();
+        $usersDetails = FarmersDetail::all();
         
         return view('admin.farmersDetails', 
             [

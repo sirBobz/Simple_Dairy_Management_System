@@ -52,7 +52,7 @@ class SuperAdminController extends Controller
      */
     public function userAdmin()
     {
-        $usersDetails = User::where('user_type', '=', 'userMilkFarmer')->get();
+        $usersDetails = User::where('user_type', '=', 'userAdmin')->get();
         
         return view('SuperAdmin.userAdmin', 
             [

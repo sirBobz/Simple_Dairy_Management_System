@@ -159,10 +159,7 @@
                     <a href="{{ url('/organization/return-view/reports/select-by-date') }}">
                         <i class="fa fa-bar-chart"></i> <span>Reports</span></a>
                 </li>
-                <li class="treeview">
-                    <a href="{{ url('/organization/return-view/admin-settings') }}">
-                        <i class="fa fa-cog"></i> <span>Settings</span></a>
-                </li>
+                
                 <li class="treeview">
                     <a href="{{ url('/organization/return-view/admin-users') }}">
                         <i class="fa fa-users"></i> <span>Users</span></a>

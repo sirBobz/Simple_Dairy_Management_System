@@ -153,13 +153,13 @@
                 </li>
                 <li class="treeview">
                     <a href="{{ url('/organization/return-view/user-admin-details') }}">
-                        <i class="fa fa-university"></i> <span> User Admin</span></a>
+                        <i class="fa fa-user"></i> <span> User Admin</span></a>
                 </li>
              
                
                 <li class="treeview">
                     <a href="{{ url('/organization/return-view/super-admin/users') }}">
-                        <i class="fa fa-users"></i> <span>Users</span></a>
+                        <i class="fa fa-users"></i> <span>Admin Users</span></a>
                 </li>
             </ul>
         </section>

@@ -38,11 +38,12 @@
                         <tr class = "success">
                             <th class="text-center">ID</th>
                             <th class="text-center">Farmer Name</th>
-                            <th class="text-center">ID No</th>
+                            <th class="text-center">ID Number</th>
                             <th class="text-center">Dairy Number</th>
                             <th class="text-center">Milk Weight</th>
-                            <th class="text-center">Total Amount</th>
                             <th class="text-center">Milk Condition</th>
+                            <th class="text-center">Total Milk Weight</th>
+                            
                             <th class="text-center">Created At</th>
                             <th class="text-center">Action</th>
                         </tr>
@@ -51,12 +52,13 @@
                         @foreach($ProduceDetails as $item)
                         <tr class="item{{$item->id}}">
                             <td class="text-center">{{$id ++}}</td>
-                            <td class="text-center">{{$item->farmerName}}</td>
+                            <td class="text-center">{{$item->name}}</td>
                             <td class="text-center">{{$item->farmer_ID}}</td>
                             <td class="text-center">{{$item->farmerDairyNum}}</td>
                             <td class="text-center">{{$item->milk_weight}}</td>
-                            <td class="text-center">{{$item->total_Amount}}</td>
                             <td class="text-center">{{$item->milk_condition}}</td>
+                            <td class="text-center">{{$item->total_milk_weight}}</td>
+                            
                             <td class="text-center">{{$item->created_at}}</td>
                             <td class="text-center"><form action="delete-farmer-produce/{{$item->id}}" method='post'>
                             {{csrf_field()}}
