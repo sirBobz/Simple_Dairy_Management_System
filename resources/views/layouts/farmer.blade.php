@@ -150,10 +150,10 @@
                     <a href="{{ url('/organization/return-view/produce-records') }}">
                         <i class="fa fa-money"></i> <span>Milk Records</span></a>
                 </li>
-                <li class="treeview">
+                <!-- <li class="treeview">
                     <a href="{{ url('/organization/return-view/farmer-reports/select-by-date') }}">
                         <i class="fa fa-bar-chart"></i> <span>Reports</span></a>
-                </li>
+                </li> -->
                 <li class="treeview">
                     <a href="{{ url('/organization/return-view/user-details') }}">
                         <i class="fa fa-users"></i> <span>My Details</span></a>

@@ -148,6 +148,10 @@
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                 </li>
                 <li class="treeview">
+                    <a href="{{ url('/organization/return-view/user-admin-famers') }}">
+                        <i class="fa fa-user"></i> <span> Farmers</span></a>
+                </li>
+                <li class="treeview">
                     <a href="{{ url('/organization/return-view/super-admin/farmers-produce') }}">
                         <i class="fa fa-bar-chart"></i> <span> Milk Produce</span></a>
                 </li>
@@ -155,7 +159,10 @@
                     <a href="{{ url('/organization/return-view/user-admin-details') }}">
                         <i class="fa fa-user"></i> <span> User Admin</span></a>
                 </li>
-             
+                <li class="treeview">
+                    <a href="{{ url('/organization/return-view/settings') }}">
+                        <i class="fa fa-cog"></i> <span> Settings</span></a>
+                </li>
                
                 <li class="treeview">
                     <a href="{{ url('/organization/return-view/super-admin/users') }}">

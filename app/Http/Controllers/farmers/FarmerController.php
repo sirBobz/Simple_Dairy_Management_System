@@ -30,11 +30,33 @@ class FarmerController extends Controller
      */
     public function dashboard()
     {
-        $userId = Auth::user()->id;
+    $userId = Auth::user()->id;
+    $numb_famers = FarmersDetail::count();
+
+    $total_milk_month = DB::table('produces')
+          ->where('user_id', $userId)
+         ->whereraw('MONTH(created_at) = ?', [date('n')] )
+         ->sum ('milk_weight');
+
+    $amount_today = DB::table('produces')
+          ->where('user_id', $userId)
+         ->whereraw('date(created_at) = ?', [carbon::today()] )
+         ->sum ('milk_weight');
+
+    $total_month = DB::table('produces')
+         ->where('user_id', $userId)
+         ->whereraw('MONTH(created_at) = ?', [date('n')] )
+         ->sum ('milk_weight');
+
+    $total_milk_delivered = Produce::where('user_id','=', $userId)->sum('milk_weight');    
 
         
 
-        return view('farmer.dashboard');
+        return view('farmer.dashboard',
+            ['total_milk_delivered'=>$total_milk_delivered,
+            'total_milk_month'=>$total_milk_month,
+            'amount_today'=>$amount_today,
+            'total_month'=>$total_month]);
     }
 
     /**
@@ -46,7 +68,7 @@ class FarmerController extends Controller
     {
         $userEmail = Auth::user()->email;
 
-        $usersDetails = User::where('email', '=', $userEmail)->orderBy('created_at', 'desc')->paginate(10);
+        $usersDetails = User::where('email', '=', $userEmail)->orderBy('created_at', 'desc')->get();
         
         return view('farmer.farmersDetails', ['usersDetails'=>$usersDetails]);
     }
@@ -60,7 +82,7 @@ class FarmerController extends Controller
     {
        $userId = Auth::user()->id;
        
-       $farmersProduce = Produce::where('user_id', '=', $userId)->get();
+       $farmersProduce = Produce::where('user_id', '=', $userId)->orderBy('created_at', 'desc')->get();
        
        return view('farmer.farmersProduce', ['farmersProduce'=>$farmersProduce]);
     }

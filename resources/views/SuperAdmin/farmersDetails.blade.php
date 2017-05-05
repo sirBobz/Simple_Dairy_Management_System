@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.superadmin')
 
 @section('content')
 
@@ -7,7 +7,7 @@
 
         <h1>Farmer Details</h1>
         <ol class="breadcrumb">
-            <li><a href="{{ url('organization/return-view/admin-dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="{{ url('/organization/return-view/super-admin-dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li class="active">Farmer Details</li>
         </ol>
 
@@ -28,7 +28,6 @@
         <div class="box box-purple">
             <div class="box-header with-border">
                 <h3 class="box-title"></h3>
-                <button type="button" class="btn btn-facebook btn-flat btn-sm" data-toggle="modal" data-target="#addUser"><span class="glyphicon glyphicon-user"></span> Add Farmer</button>
 
                     <!-- /.box-header -->
                     <?php $id = 1; ?>
@@ -40,15 +39,12 @@
                                <thead>
                                  <tr class = "success">
                                     <th class="text-center"> Id </th>
-                                    <th class="text-center"> Name </th>
-                                    <th class="text-center"> Gender </th>
-                                    <th class="text-center"> Email</th>
                                     <th class="text-center"> ID Number</th>
                                     <th class="text-center"> Address</th>
                                     <th class="text-center"> Dairy Number</th>
                                     <th class="text-center"> Total Milk</th>
                                     <th class="text-center"> Created At</th>
-                                    <th class="text-center"> Action</th>
+                                    
                                 </tr>
                                </thead>
 
@@ -57,115 +53,13 @@
                                     @foreach($usersDetails as $user)
                                         <tr class="user{{$user->id}}">
                                             <td class="text-center"> {{$id ++}} </td>
-                                            <td class="text-center">
-                                            @php 
-                                               $userId = $user->user_id;
-                                               $name = App\Models\User::where('id', '=',  $userId)->firstOrFail();
-                                               $first = $name->first_name; 
-                                               $second = $name->second_name; 
-                                               $full = "$first $second";
-                                            @endphp 
-                                              {{$full}}</td>
-                                            <td class="text-center"> 
-                                            @php 
-                                                $det = App\Models\User::where('id', '=',  $userId)->firstOrFail();
-                                                $gender = $det->gender;  
-                                            @endphp
-                                             {{$gender}}</td>
-                                            <td class="text-center">
-                                            @php 
-                                                $det = App\Models\User::where('id', '=',  $userId)->firstOrFail();
-                                                $email = $det->email;  
-                                             @endphp
-                                              {{$email}} </td>
+                                            
                                             <td class="text-center"> {{$user->farmer_ID}}</td>
                                             <td class="text-center"> {{$user->box_number}} {{$user->postal_town}}</td>
                                             <td class="text-center"> {{$user->farmerDairyNum}}</td>
                                             <td class="text-center"> {{$user->total_milk_weight}}</td>         
                                             <td class="text-center"> {{$user->created_at}} </td>
-                                            <td class="text-center"> <button type="button" class="btn btn-facebook btn-flat btn-sm" data-toggle="modal"
-                                data-target="#setAccountModal{{$user->id}}"><span class="glyphicon glyphicon-edit"></span> Update
-                                    </button>
-                                    <!-- Account Set Up Modal -->
-                    <div class="modal fade" id="setAccountModal{{$user->id}}" role="dialog">
-                        <div class="modal-dialog">
-
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Milk for No. {{$user->farmerDairyNum}}</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <form class="form-horizontal" role="form" method="POST"
-                                          action="{{ url('/organization/produce-details') }}">
-                                        {{ csrf_field() }}
-                                         
-                                        <div class="form-group{{ $errors->has('milk_weight') ? ' has-error' : '' }}">
-                                            <label for="milk_weight" class="col-md-4 control-label">Weight</label>
-
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <input id="milk_weight" maxlength="3" type="number" placeholder="eg: 100" class="form-control"
-                                                       name="milk_weight" value="{{ old('milk_weight') }}"
-                                                       title="Please add milk weight" required autofocus>
-
-                                                @if ($errors->has('milk_weight'))
-                                                    <span class="help-block">
-                                                                    <strong>{{ $errors->first('milk_weight') }}</strong>
-                                                                </span>
-                                                @endif
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group{{ $errors->has('milk_condition') ? ' has-error' : '' }}">
-                                            <label for="milk_condition" class="col-md-4 control-label">Condition</label>
-
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <input id="milk_condition" maxlength="20" type="text" placeholder="eg: Okay" class="form-control"
-                                                       name="milk_condition" value="{{ old('milk_condition') }}"
-                                                       title="Please indicate milk Condition" required autofocus>
-
-                                                @if ($errors->has('milk_condition'))
-                                                    <span class="help-block">
-                                                                    <strong>{{ $errors->first('milk_condition') }}</strong>
-                                                                </span>
-                                                @endif
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }}">
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <input type="hidden" class="form-control" name="user_id" value="{{$user->user_id}}"
-                                                       required autofocus>
-
-                                                @if ($errors->has('user_id'))
-                                                    <span class="help-block">
-                                                                    <strong>{{ $errors->first('user_id') }}</strong>
-                                                                </span>
-                                                @endif
-                                            </div>
-                                        </div>
-
-                                        <br/>
-                                        <div class="form-group">
-                                            <div class="col-lg-6 col-md-6 col-sm-12 col-md-offset-4">
-                                                <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal">
-                                                    Close
-                                                </button>
-                                                <button type="submit" class="btn btn-facebook btn-flat pull-right">
-                                                    Save
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                    </form>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    </td>
+                                            
                                             
                                         </tr>
                                     @endforeach

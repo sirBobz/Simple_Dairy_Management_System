@@ -10,7 +10,9 @@ use App\Models\FarmersDetail;
 use DB, Validator, Log, Auth;
 use App\Models\MilkDetail;
 use Datatables;
+use App\Models\Setting;
 use PDF;
+use App\Mail\welcome;
 
 
 
@@ -84,6 +86,8 @@ class AdminProcessingController extends Controller
         $user->email = $email;
         $user->save();
 
+       // \Mail::to($user)->send(new welcome($user));
+
         //Get User Id
         $userId = $user->id;
 
@@ -130,7 +134,7 @@ class AdminProcessingController extends Controller
       $farmerSecondName = $UserDetails->second_name;
       $name = "$farmerFirstName  $farmerSecondName";
 
-      $farmersMilkWeight = FarmersDetail::where('user_id', '=', $user_id)->value('total_milk_weight');
+       $farmersMilkWeight = FarmersDetail::where('user_id', '=', $user_id)->value('total_milk_weight');
        $new_weight = $farmersMilkWeight + $milk_weight;
 
        FarmersDetail::where('user_id', $user_id)
@@ -144,7 +148,7 @@ class AdminProcessingController extends Controller
 
 
 
-       $produce = new Produce;
+       $produce = new Produce;  
        $produce->user_id = $user_id;
        $produce->name = $name;
        $produce->total_milk_weight = $total_milk_weight;

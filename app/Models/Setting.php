@@ -10,25 +10,23 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class PasswordReset
+ * Class Setting
  * 
- * @property string $email
- * @property string $token
+ * @property int $id
+ * @property string $milk_rate
  * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property string $deleted_at
  *
  * @package App\Models
  */
-class PasswordReset extends Eloquent
+class Setting extends Eloquent
 {
-	public $incrementing = false;
-	public $timestamps = false;
-
-	protected $hidden = [
-		'token'
-	];
+	protected $table = 'settings';
+	
+	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $fillable = [
-		'email',
-		'token'
+		'milk_rate'
 	];
 }

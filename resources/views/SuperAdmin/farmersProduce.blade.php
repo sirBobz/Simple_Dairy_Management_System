@@ -9,7 +9,7 @@
 
         <h1>Milk Records</h1>
         <ol class="breadcrumb">
-            <li><a href="{{ url('organization/return-view/admin-dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="{{ url('/organization/return-view/super-admin-dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li class="active">Milk Records</li>
         </ol>
         <!-- Congrats message -->

@@ -36,9 +36,15 @@ Route::get('/organization/return-view/super-admin-dashboard', 'SuperAdmin\SuperA
 Route::get('/organization/return-view/user-admin-details', 'SuperAdmin\SuperAdminController@userAdmin');
 Route::get('/organization/return-view/super-admin/farmers-produce', 'SuperAdmin\SuperAdminController@produce');
 Route::get('/organization/return-view/super-admin/reports/select-by-date', 'SuperAdmin\SuperAdminController@dashboard');
-Route::get('/organization/return-view/super-admin/settings', 'SuperAdmin\SuperAdminController@dashboard');
 Route::get('/organization/return-view/super-admin/users', 'SuperAdmin\SuperAdminController@users');
+Route::get('/organization/return-view/settings', 'SuperAdmin\SuperAdminController@settings');
 
+Route::get('/organization/return-view/user-admin-famers', 'SuperAdmin\SuperAdminController@farmers');
+
+
+
+
+Route::post('/register/new-milk-rate', 'SuperAdmin\SuperAdminProcessingController@validateFormRequest');
 
 
 //Admin Routes

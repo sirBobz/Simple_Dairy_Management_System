@@ -45,8 +45,17 @@
                                     <td class="text-center"> {{$id ++}} </td>
                                     <td class="text-center"> {{$user->farmerDairyNum}}</td>
                                     <td class="text-center"> {{$user->milk_weight}}</td>
-                                    <td class="text-center">{{$user->milk_Rate}} </td>
-                                    <td class="text-center"> {{$user->total_Amount}}</td>
+                                    <td class="text-center">  
+                                          @php
+                                          $Setting = App\Models\Setting::orderBy('created_at', 'desc')->firstOrFail();
+                                          $latestRate = $Setting->milk_rate;
+                                          @endphp
+                                          {{$latestRate}} 
+                                    </td>
+                                    <td class="text-center"> 
+                                    {{$latestRate * $user->milk_weight}}
+
+                                    </td>
                                     <td class="text-center"> {{$user->milk_condition}}</td>
                                     <td class="text-center"> {{$user->created_at}} </td>
                                     

@@ -153,12 +153,12 @@
                 </li>
                 <li class="treeview">
                     <a href="{{ url('/organization/return-view/farmers-produce') }}">
-                        <i class="fa fa-money"></i> <span>Milk Records</span></a>
+                        <i class="fa fa-tasks"></i> <span>Milk Records</span></a>
                 </li>
-                <li class="treeview">
+                <!-- <li class="treeview">
                     <a href="{{ url('/organization/return-view/reports/select-by-date') }}">
                         <i class="fa fa-bar-chart"></i> <span>Reports</span></a>
-                </li>
+                </li> -->
                 
                 <li class="treeview">
                     <a href="{{ url('/organization/return-view/admin-users') }}">

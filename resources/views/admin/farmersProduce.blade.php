@@ -41,9 +41,10 @@
                             <th class="text-center">ID Number</th>
                             <th class="text-center">Dairy Number</th>
                             <th class="text-center">Milk Weight</th>
+                            <th class="text-center">Milk Rate</th>
+                            <th class="text-center">Amount Payable</th>
                             <th class="text-center">Milk Condition</th>
                             <th class="text-center">Total Milk Weight</th>
-                            
                             <th class="text-center">Created At</th>
                             <th class="text-center">Action</th>
                         </tr>
@@ -56,6 +57,14 @@
                             <td class="text-center">{{$item->farmer_ID}}</td>
                             <td class="text-center">{{$item->farmerDairyNum}}</td>
                             <td class="text-center">{{$item->milk_weight}}</td>
+                            <td class="text-center">
+                                          @php
+                                          $Setting = App\Models\Setting::orderBy('created_at', 'desc')->firstOrFail();
+                                          $latestRate = $Setting->milk_rate;
+                                          @endphp
+                                          {{$latestRate}} 
+                            </td>
+                            <td class="text-center">{{$latestRate * $item->milk_weight}}</td>
                             <td class="text-center">{{$item->milk_condition}}</td>
                             <td class="text-center">{{$item->total_milk_weight}}</td>
                             

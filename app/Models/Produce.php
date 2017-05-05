@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Wed, 03 May 2017 06:29:00 +0300.
+ * Date: Wed, 03 May 2017 18:00:52 +0300.
  */
 
 namespace App\Models;
@@ -30,6 +30,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class Produce extends Eloquent
 {
+	protected $table = 'produces';
+	
 	use \Illuminate\Database\Eloquent\SoftDeletes;
 
 	protected $casts = [

@@ -1,4 +1,4 @@
-<td class="text-center">
+                                            <td class="text-center">
                                             <?php 
                                              $name = App\Models\User::where('id', '=', $user->id)->firstorfail();
                                              $first = $name->first_name; 
