@@ -48,8 +48,8 @@
                                     <i class="fa fa-money fa-2x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"> </div>
-                                    <div>Total Amount Per Month</div>
+                                    <div class="huge">{{$month_amount}} </div>
+                                    <div>Total Amount</div>
                                 </div>
                             </div>
                         </div>

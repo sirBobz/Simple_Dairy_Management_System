@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Produce;
 use App\Models\FarmersDetail;
 use Auth;
+use App\Models\Setting;
 use DB;
 use Carbon\Carbon;
 
@@ -38,6 +39,11 @@ class FarmerController extends Controller
          ->whereraw('MONTH(created_at) = ?', [date('n')] )
          ->sum ('milk_weight');
 
+    $Setting = Setting::orderBy('created_at', 'desc')->firstOrFail();
+    $latestRate = $Setting->milk_rate;
+
+    $month_amount =  $total_milk_month * $latestRate;    
+
     $amount_today = DB::table('produces')
           ->where('user_id', $userId)
          ->whereraw('date(created_at) = ?', [carbon::today()] )
@@ -56,6 +62,7 @@ class FarmerController extends Controller
             ['total_milk_delivered'=>$total_milk_delivered,
             'total_milk_month'=>$total_milk_month,
             'amount_today'=>$amount_today,
+            'month_amount'=>$month_amount,
             'total_month'=>$total_month]);
     }
 
